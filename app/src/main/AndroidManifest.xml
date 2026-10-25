@@ -1,0 +1,49 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <uses-permission android:name="moe.shizuku.manager.permission.API_V23"/>
+ <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+ <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+ <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+ <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+ <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+ <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+ <uses-feature android:name="android.hardware.sensor.hinge_angle" android:required="false"/>
+ <queries><intent><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.HOME"/></intent><package android:name="moe.shizuku.privileged.api"/><intent><action android:name="android.service.wallpaper.WallpaperService"/></intent><package android:name="com.samsung.android.wallpaper.live"/><package android:name="com.samsung.android.wallpaper.res"/></queries>
+ <uses-permission android:name="android.permission.WAKE_LOCK" />
+ <application android:name=".DuoApplication" android:label="Duo Fold Live" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher" android:theme="@style/Theme.Standalone" android:allowBackup="false" android:hardwareAccelerated="true">
+  <provider android:name="androidx.core.content.FileProvider" android:authorities="org.duofold.live.files" android:exported="false" android:grantUriPermissions="true"><meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/export_paths"/></provider>
+  <meta-data android:name="moe.shizuku.client.V3_SUPPORT" android:value="true"/>
+  <provider android:name="rikka.shizuku.ShizukuProvider" android:authorities="org.duofold.live.shizuku" android:exported="true" android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+  <receiver android:name=".SupportReminderReceiver" android:exported="false"/>
+  <receiver android:name=".RestoreReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.MY_PACKAGE_REPLACED"/><action android:name="android.intent.action.BOOT_COMPLETED"/></intent-filter></receiver>
+  <activity android:name=".MainActivity" android:exported="true" android:resizeableActivity="true" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density">
+   <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+   <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/><category android:name="android.intent.category.DEFAULT"/></intent-filter>
+  </activity>
+  <service android:name=".DuoTileService" android:label="Duo Fold Live" android:icon="@drawable/ic_duo_tile" android:exported="true" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+   <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE"/></intent-filter>
+   <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true"/>
+  </service>
+  <service android:name=".PhotoWallpaperService" android:label="Duo photo wallpaper test" android:exported="true" android:permission="android.permission.BIND_WALLPAPER">
+   <intent-filter><action android:name="android.service.wallpaper.WallpaperService"/></intent-filter>
+   <meta-data android:name="android.service.wallpaper" android:resource="@xml/photo_wallpaper"/>
+  </service>
+  <activity android:name=".WallpaperStudioActivity" android:exported="false" android:resizeableActivity="true" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <activity android:name=".WallpaperTestActivity" android:exported="false"/>
+  <activity android:name=".FolderGlassActivity" android:exported="true" android:label="Duo 資料夾 Debug" android:icon="@mipmap/ic_launcher" android:taskAffinity="org.duofold.live.folderglass" android:resizeableActivity="true" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density">
+   <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+  </activity>
+  <activity android:name=".PrivacyActivity" android:exported="false"/>
+  <activity android:name=".SetupActivity" android:exported="false" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <activity android:name=".FoldBridgeActivity" android:exported="false" android:theme="@style/Theme.Duo.FoldBridge" android:taskAffinity="org.duofold.live.foldbridge" android:excludeFromRecents="true" android:noHistory="true" android:resizeableActivity="true" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <activity android:name=".FoldProbeActivity" android:exported="false" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <activity android:name=".CameraContinuityActivity" android:exported="false" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <activity android:name=".FoldMotionActivity" android:exported="false" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
+  <service android:name=".FoldBackgroundService" android:exported="false" android:stopWithTask="false" android:foregroundServiceType="specialUse"><property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Persistent fold keep-awake setting supervision, hinge animation overlay and wallpaper-angle reader"/></service>
+  <service android:name=".StandaloneService" android:label="Duo Fold Live" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:exported="true">
+   <intent-filter><action android:name="android.accessibilityservice.AccessibilityService"/></intent-filter>
+   <meta-data android:name="android.accessibilityservice" android:resource="@xml/accessibility"/>
+  </service>
+  <activity android:name="org.duofold.live.wallpaperlayer.WallpaperActivity" android:exported="false" android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"/>
+ </application>
+ <instrumentation android:name="org.duofold.live.wallpaperlayer.PhotoInstrumentation" android:targetPackage="org.duofold.live" android:functionalTest="true" android:label="Custom wallpaper host"/>
+</manifest>

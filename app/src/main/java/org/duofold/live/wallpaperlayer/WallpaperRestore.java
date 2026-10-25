@@ -1,0 +1,106 @@
+package org.duofold.live.wallpaperlayer;
+import org.duofold.live.PrivilegedAccess;
+import android.content.*;
+import android.os.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.concurrent.Executors;
+import rikka.shizuku.Shizuku;
+import org.duofold.live.BuildConfig;
+import org.duofold.live.FoldBackgroundService;
+/** Saved user intent survives package updates. Disable never deletes the selected photo. */
+public final class WallpaperRestore {
+ private static final String KEY="custom_wallpaper_enabled";
+ private static final Handler main=new Handler(Looper.getMainLooper());
+ private static final java.util.concurrent.ExecutorService worker=Executors.newSingleThreadExecutor();
+ private static IBinder remote;private static boolean connecting,pending;private static long retryAt;
+ private static int generation;
+ private static PrivilegedAccess.UserServiceArgs boundArgs;
+ private static ServiceConnection connection;
+ private static Runnable connectionTimeout;
+ public static volatile String status="Wallpaper recovery idle";
+ private WallpaperRestore(){}
+ public static synchronized boolean enabled(Context c){
+  android.content.SharedPreferences p=c.getSharedPreferences("standalone",0);
+  if(p.contains(KEY))return p.getBoolean(KEY,false);
+  // Migrate a legacy active host only; an explicit saved OFF always wins.
+  boolean active=false;File dir=c.getFilesDir();
+  if(new File(dir,"photo.jpg").exists()&&!new File(dir,"stop-layer").exists())try{
+   String report=new String(Files.readAllBytes(new File(dir,"layer-report.txt").toPath()),StandardCharsets.UTF_8);
+   active=report.contains("Custom wallpaper running — no time limit");
+  }catch(IOException ignored){}
+  p.edit().putBoolean(KEY,active).commit();return active;
+ }
+ public static synchronized void setEnabled(Context c,boolean value)throws IOException{
+  if(value&&!org.duofold.live.RuntimeConsent.ready(c))throw new IOException("Review Privacy & controls in Duo before enabling wallpaper");
+  File stop=new File(c.getFilesDir(),"stop-layer");
+  if(value){if(!new File(c.getFilesDir(),"photo.jpg").exists())throw new IOException("Choose a photo first");if(stop.exists()&&!stop.delete())throw new IOException("Could not clear wallpaper stop request");}
+  else if(!stop.exists()&&!stop.createNewFile())throw new IOException("Could not save wallpaper stop request");
+  if(!c.getSharedPreferences("standalone",0).edit().putBoolean(KEY,value).commit())throw new IOException("Could not save wallpaper preference");
+  retryAt=0;status=value?"Saved enabled wallpaper; reconnecting":"Custom wallpaper disabled; photo retained";
+ }
+ public static PrivilegedAccess.UserServiceArgs args(Context c){return new PrivilegedAccess.UserServiceArgs(new ComponentName(c,HostLauncher.class)).daemon(true).processNameSuffix("wallpaper_layer").version(BuildConfig.VERSION_CODE);}
+ // Detach the observer only: the daemon may be hosting the user's active wallpaper.
+ public static void reconnect(){
+  generation++;
+  if(connectionTimeout!=null){main.removeCallbacks(connectionTimeout);connectionTimeout=null;}
+  if(boundArgs!=null&&connection!=null)try{PrivilegedAccess.unbindUserService(boundArgs,connection,false);}catch(Exception e){org.duofold.live.RecoveryLog.add("Wallpaper callback detach: "+e.getClass().getSimpleName());}
+  boundArgs=null;connection=null;remote=null;connecting=false;retryAt=0;
+  // An already-running transaction retains 'pending' until its worker returns.
+ }
+ public static void resume(Context context){
+  Context c=context.getApplicationContext();
+  org.duofold.live.FoldAwakeDefault.persist(c);
+  if(!org.duofold.live.RuntimeControls.wanted(c))return;
+  try{c.startForegroundService(new Intent(c,FoldBackgroundService.class));}catch(Exception e){status="Wallpaper choice saved; open Duo to resume: "+e.getClass().getSimpleName();}
+ }
+ public static void tick(Context context){
+  Context c=context.getApplicationContext();
+  if(!org.duofold.live.RuntimeConsent.ready(c)||!enabled(c)){status="Custom wallpaper disabled; photo retained";return;}
+  if(PhotoInstrumentation.running){status="Saved custom wallpaper running";return;}
+  if(connecting||pending||SystemClock.elapsedRealtime()<retryAt)return;
+  try{
+   if(!new File(c.getFilesDir(),"photo.jpg").exists()){status="Saved wallpaper photo missing; choose a replacement";return;}
+   if(!PrivilegedAccess.pingBinder()||PrivilegedAccess.checkSelfPermission()!=0){status="Wallpaper saved; waiting for authorized Shizuku or root";return;}
+   if(remote==null||!remote.isBinderAlive()){
+    connecting=true;retryAt=SystemClock.elapsedRealtime()+15000;
+    final int attempt=++generation;final long started=SystemClock.elapsedRealtime();
+    status="Connecting to wallpaper helper";
+    org.duofold.live.RecoveryLog.add("Wallpaper helper: bind requested");
+    boundArgs=args(c);
+    connection=new ServiceConnection(){
+     public void onServiceConnected(ComponentName n,IBinder binder){main.post(()->{
+      if(attempt!=generation||!connecting)return;
+      if(connectionTimeout!=null)main.removeCallbacks(connectionTimeout);
+      remote=binder;connecting=false;retryAt=0;status="Wallpaper helper connected";
+      org.duofold.live.RecoveryLog.add("Wallpaper helper: connected after "+(SystemClock.elapsedRealtime()-started)+" ms");
+     });}
+     public void onServiceDisconnected(ComponentName n){main.post(()->{if(attempt!=generation)return;reconnect();status="Wallpaper helper disconnected; retrying";});}
+    };
+    connectionTimeout=()->{if(attempt!=generation||!connecting)return;reconnect();retryAt=SystemClock.elapsedRealtime()+15000;status="Wallpaper helper: no service connection callback after 35 s; retrying";org.duofold.live.RecoveryLog.add(status);};
+    main.postDelayed(connectionTimeout,org.duofold.live.HelperAttempt.START_TIMEOUT_MS);
+    PrivilegedAccess.bindUserService(boundArgs,connection);
+    return;
+   }
+   pending=true;retryAt=SystemClock.elapsedRealtime()+15000;IBinder binder=remote;final int requestGeneration=generation;
+   worker.execute(()->{
+    String result;
+    try{
+     if(!enabled(c)){result="Custom wallpaper disabled";}
+     else{
+      if(!org.duofold.live.RuntimeConsent.ready(c))throw new IOException("Review Privacy & controls in Duo before enabling wallpaper");
+  File stop=new File(c.getFilesDir(),"stop-layer");if(stop.exists())throw new IOException("Wallpaper stop request pending");
+      Parcel p=Parcel.obtain(),r=Parcel.obtain();int active;
+      try{p.writeInterfaceToken(HostLauncher.TOKEN);if(!binder.transact(4,p,r,0))throw new IOException("Wallpaper observer unavailable");r.readException();active=r.readInt();}finally{p.recycle();r.recycle();}
+      if(active==0&&enabled(c)){
+       p=Parcel.obtain();r=Parcel.obtain();
+       try{p.writeInterfaceToken(HostLauncher.TOKEN);p.writeTypedObject((ParcelFileDescriptor)null,0);binder.transact(1,p,r,0);r.readException();result=r.readString();}finally{p.recycle();r.recycle();}
+      }else result="Wallpaper host active / starting";
+     }
+    }catch(Exception e){result="Wallpaper recovery retry: "+e;}
+    String next=result;main.post(()->{pending=false;if(requestGeneration==generation)status=next;});
+   });
+  }catch(Exception e){reconnect();retryAt=SystemClock.elapsedRealtime()+15000;status="Wallpaper recovery waiting: "+e;}
+ }
+}

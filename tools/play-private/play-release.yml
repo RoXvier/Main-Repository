@@ -1,0 +1,150 @@
+name: Private Play release
+
+on:
+  workflow_dispatch:
+    inputs:
+      stable_tag:
+        description: 'Published stable tag from joeconsorti/duo-fold-live (for example v3.5.7)'
+        required: true
+        type: string
+      test_apk:
+        description: 'Also build a signed Play APK for handset testing'
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: private-play-release
+  cancel-in-progress: false
+
+jobs:
+  play:
+    # Fail closed: this workflow must never publish from a public repository.
+    if: github.event.repository.private == true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Resolve approved stable source and matching version code
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STABLE_TAG: ${{ inputs.stable_tag }}
+        run: |
+          set -euo pipefail
+          [[ "$STABLE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo 'Only stable vX.Y.Z tags are accepted'; exit 1; }
+          gh api "repos/joeconsorti/duo-fold-live/releases/tags/$STABLE_TAG" > "$RUNNER_TEMP/source-release.json"
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          release=json.loads(Path(os.environ['RUNNER_TEMP'],'source-release.json').read_text())
+          assert not release['draft'] and not release['prerelease'], 'Source must be a published stable release'
+          assert release['tag_name']==os.environ['STABLE_TAG']
+          codes=re.findall(r'^Version code: (\d+)\s*$', release['body'] or '', re.M)
+          assert len(codes)==1, 'Stable release must record its exact version code'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('code='+codes[0]+'\n')
+          PY
+      - uses: actions/checkout@v7
+        with:
+          repository: joeconsorti/duo-fold-live
+          ref: ${{ inputs.stable_tag }}
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Record exact source identity
+        id: identity
+        env:
+          STABLE_TAG: ${{ inputs.stable_tag }}
+          VERSION_CODE: ${{ steps.source.outputs.code }}
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD > "$RUNNER_TEMP/source-sha.txt"
+          python3 - <<'PY'
+          import os, re
+          from pathlib import Path
+          p=Path('app/build.gradle.kts'); text=p.read_text()
+          name=re.search(r'versionName\s*=\s*"([^"]+)"',text).group(1)
+          assert 'v'+name==os.environ['STABLE_TAG'], 'Tag/version mismatch'
+          assert 'create("play")' in text, 'This stable tag predates Play build support'
+          original=int(re.search(r'versionCode\s*=\s*(\d+)',text).group(1))
+          code=int(os.environ['VERSION_CODE']); assert code>=original
+          text,count=re.subn(r'\bversionCode\s*=\s*\d+',f'versionCode = {code}',text)
+          assert count==1; p.write_text(text)
+          PY
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            **/*.gradle.kts
+            gradle/wrapper/gradle-wrapper.properties
+      - uses: android-actions/setup-android@v4
+      - name: Install SDK
+        run: |
+          sdkmanager 'platform-tools' 'platforms;android-36' 'build-tools;35.0.0'
+          printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
+          chmod +x gradlew
+      - name: Test and build Play bundle
+        env:
+          TEST_APK: ${{ inputs.test_apk }}
+        run: |
+          set -euo pipefail
+          python3 tools/check_inner_stretch.py
+          python3 tools/check_window_shading.py
+          tasks=(testPlayReleaseUnitTest lintPlayRelease bundlePlayRelease)
+          if [ "$TEST_APK" = true ]; then tasks+=(assemblePlayRelease); fi
+          ./gradlew --no-daemon "${tasks[@]}"
+          python3 tools/check_release_outputs.py --variant play
+      - name: Sign and verify private outputs
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          STABLE_TAG: ${{ inputs.stable_tag }}
+          TEST_APK: ${{ inputs.test_apk }}
+        run: |
+          set -euo pipefail
+          : "${KEYSTORE_BASE64:?Missing signing secret}"
+          : "${STORE_PASSWORD:?Missing signing secret}"
+          : "${KEY_ALIAS:?Missing signing secret}"
+          : "${KEY_PASSWORD:?Missing signing secret}"
+          umask 077
+          key="$RUNNER_TEMP/play-upload.jks"
+          trap 'rm -f "$key" "$RUNNER_TEMP/play-aligned.apk"' EXIT
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$key"
+          mkdir -p dist
+          aab="dist/Duo-Fold-Live-play-${STABLE_TAG}.aab"
+          cp app/build/outputs/bundle/playRelease/app-play-release.aab "$aab"
+          jarsigner -keystore "$key" -storepass:env STORE_PASSWORD -keypass:env KEY_PASSWORD "$aab" "$KEY_ALIAS"
+          jarsigner -verify "$aab"
+          if [ "$TEST_APK" = true ]; then
+            apk="dist/Duo-Fold-Live-play-${STABLE_TAG}.apk"
+            tools="$ANDROID_HOME/build-tools/35.0.0"
+            "$tools/zipalign" -f -P 16 4 app/build/outputs/apk/play/release/app-play-release-unsigned.apk "$RUNNER_TEMP/play-aligned.apk"
+            "$tools/apksigner" sign --ks "$key" --ks-key-alias "$KEY_ALIAS" --ks-pass env:STORE_PASSWORD --key-pass env:KEY_PASSWORD --out "$apk" "$RUNNER_TEMP/play-aligned.apk"
+            "$tools/apksigner" verify --verbose --print-certs "$apk"
+            "$tools/zipalign" -c -P 16 4 "$apk"
+          fi
+          cp "$RUNNER_TEMP/source-sha.txt" dist/SOURCE_COMMIT.txt
+          (cd dist; sha256sum *.aab > SHA256SUMS.txt; if compgen -G '*.apk' > /dev/null; then sha256sum *.apk >> SHA256SUMS.txt; fi)
+      - name: Publish only to this private repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STABLE_TAG: ${{ inputs.stable_tag }}
+          VERSION_CODE: ${{ steps.source.outputs.code }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY" --jq .private)" = true
+          printf 'Source: joeconsorti/duo-fold-live %s\nSource commit: %s\nVersion code: %s\nNot uploaded to Play Console automatically.\n' "$STABLE_TAG" "$(cat dist/SOURCE_COMMIT.txt)" "$VERSION_CODE" > "$RUNNER_TEMP/play-notes.txt"
+          gh release create "play-${STABLE_TAG}-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}" dist/* --repo "$GITHUB_REPOSITORY" --title "Play $STABLE_TAG" --notes-file "$RUNNER_TEMP/play-notes.txt" --latest=false
+      - name: Clean signing files
+        if: always()
+        run: rm -f "$RUNNER_TEMP/play-upload.jks" "$RUNNER_TEMP/play-aligned.apk"

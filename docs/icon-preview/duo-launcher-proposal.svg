@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+ <defs>
+  <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#263d5b"/><stop offset="1" stop-color="#252139"/></linearGradient>
+  <linearGradient id="panel" gradientUnits="userSpaceOnUse" x1="192" y1="192" x2="832" y2="832"><stop stop-color="#a7dfd1"/><stop offset="1" stop-color="#b4c8ff"/></linearGradient>
+ </defs>
+ <rect width="1024" height="1024" rx="224" fill="url(#background)"/>
+ <rect x="224" y="268.8" width="256" height="486.4" rx="51.2" fill="none" stroke="#b4c8ff" stroke-width="29.09"/>
+ <rect x="544" y="268.8" width="256" height="486.4" rx="51.2" fill="url(#panel)"/>
+</svg>

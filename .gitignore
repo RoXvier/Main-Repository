@@ -1,0 +1,20 @@
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+signing/
+*.jks
+*.keystore
+*.p12
+*.apk
+*.aab
+*.log
+.env
+.env.*
+captures/
+
+.kotlin/
+
+# Folder-glass debug: shared public debug key (not a release key)
+!app/folderglass-debug.keystore

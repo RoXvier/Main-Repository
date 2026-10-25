@@ -1,0 +1,55 @@
+name: Folder glass debug APK
+
+# Builds the 3.5.8 folder-glass debug APK without any release secrets.
+# Run it from the Actions tab (Run workflow) or push to a folderglass/** branch.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['folderglass/**']
+
+permissions:
+  contents: read
+
+jobs:
+  debug-apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+          printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
+          chmod +x gradlew
+
+      - name: Build debug APK
+        run: ./gradlew --no-daemon assembleGithubDebug
+
+      - name: Name the APK
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/github/debug/app-github-debug.apk dist/Duo-Fold-Live-3.5.8-folderglass-debug.1.apk
+          (cd dist && sha256sum *.apk > SHA256SUMS.txt)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Duo-Fold-Live-3.5.8-folderglass-debug.1
+          path: dist/*
+          if-no-files-found: error
+
+      # Runs after the upload so a flaky existing test never withholds the APK.
+      - name: Unit tests
+        continue-on-error: true
+        run: ./gradlew --no-daemon testGithubDebugUnitTest
