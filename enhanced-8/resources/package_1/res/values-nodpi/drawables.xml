@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <drawable name="haze_noise">res/drawable-nodpi-v4/haze_noise.webp</drawable>
+</resources>

@@ -1,0 +1,56 @@
+package com.drdisagree.colorblendr.ui.compose.theme
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialExpressiveTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.drdisagree.colorblendr.BuildConfig
+import com.drdisagree.colorblendr.ColorBlendr
+import com.drdisagree.colorblendr.data.domain.PreviewController
+import com.drdisagree.colorblendr.ui.compose.utils.LocalWidthClass
+import com.drdisagree.colorblendr.ui.compose.utils.currentWidthClass
+
+@Composable
+fun ColorBlendrTheme(content: @Composable () -> Unit) {
+    if (LocalInspectionMode.current) {
+        ColorBlendr.initializeForPreview(LocalContext.current)
+    }
+
+    val previewTheme by PreviewController.previewTheme.collectAsStateWithLifecycle()
+    val viewScheme = viewThemeColorScheme()
+    val isDark = isSystemInDarkTheme()
+    val previewScheme = remember(previewTheme, isDark) {
+        previewTheme?.scheme(isDark)?.toColorScheme()
+    }
+    val colorScheme = previewScheme ?: viewScheme
+
+    if (BuildConfig.DEBUG && !LocalInspectionMode.current && previewTheme == null) {
+        PreviewSchemeParityCheck(viewScheme)
+    }
+
+    CompositionLocalProvider(LocalWidthClass provides currentWidthClass()) {
+        MaterialExpressiveTheme(
+            colorScheme = colorScheme,
+            typography = AppTypography,
+            content = content
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ColorBlendrThemePreview() {
+    ColorBlendrTheme {
+        Surface {
+            Text(text = "ColorBlendr")
+        }
+    }
+}

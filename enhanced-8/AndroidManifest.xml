@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<manifest android:versionCode="58"
+          android:versionName="3.1.3-enhanced.8"
+          android:compileSdkVersion="37"
+          android:compileSdkVersionCodename="17"
+          package="com.drdisagree.colorblendr.samsungfix"
+          platformBuildVersionCode="37"
+          platformBuildVersionName="17" xmlns:android="http://schemas.android.com/apk/res/android">
+  <uses-sdk android:minSdkVersion="31"
+            android:targetSdkVersion="36" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                   android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+                   android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+  <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <queries>
+    <intent>
+      <action android:name="android.service.wallpaper.WallpaperService" />
+    </intent>
+  </queries>
+  <permission android:name="com.drdisagree.colorblendr.samsungfix.permission.PREVIEW_THEME"
+              android:protectionLevel="signature" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <permission android:name="com.drdisagree.colorblendr.samsungfix.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              android:protectionLevel="signature" />
+  <uses-permission android:name="com.drdisagree.colorblendr.samsungfix.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+  <uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
+  <application android:theme="@style/Base.Theme"
+               android:label="@string/app_name"
+               android:icon="@mipmap/ic_launcher"
+               android:name="com.drdisagree.colorblendr.ColorBlendr"
+               android:debuggable="true"
+               android:allowBackup="true"
+               android:hardwareAccelerated="true"
+               android:largeHeap="true"
+               android:supportsRtl="true"
+               android:extractNativeLibs="true"
+               android:fullBackupContent="@xml/backup_rules"
+               android:roundIcon="@mipmap/ic_launcher_round"
+               android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+               android:dataExtractionRules="@xml/data_extraction_rules"
+               android:localeConfig="@xml/locales_config"
+               android:enableOnBackInvokedCallback="true">
+    <activity android:theme="@style/Base.Theme.ColorBlendr.SplashScreen"
+              android:icon="@mipmap/ic_launcher"
+              android:name="com.drdisagree.colorblendr.ui.activities.MainActivity"
+              android:exported="true"
+              android:configChanges="orientation|uiMode"
+              android:roundIcon="@mipmap/ic_launcher_round">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <intent-filter android:priority="999">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.OPENABLE" />
+        <data android:host="*" />
+        <data android:mimeType="*/*" />
+        <data android:scheme="content" />
+        <data android:pathPattern=".*\.colorblendr" />
+        <data android:pathPattern=".*\..*\.colorblendr" />
+        <data android:pathPattern=".*\..*\..*\.colorblendr" />
+        <data android:pathPattern=".*\..*\..*\..*\.colorblendr" />
+        <data android:pathPattern=".*\..*\..*\..*\..*\.colorblendr" />
+        <data android:pathPattern=".*\..*\..*\..*\..*\..*\.colorblendr" />
+        <data android:pathPattern=".*\..*\..*\..*\..*\..*\..*\.colorblendr" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="colorblendr"
+              android:host="theme" />
+      </intent-filter>
+    </activity>
+    <activity-alias android:name="com.drdisagree.colorblendr.ui.activities.PreviewAlias"
+                    android:permission="com.drdisagree.colorblendr.samsungfix.permission.PREVIEW_THEME"
+                    android:exported="true"
+                    android:targetActivity="com.drdisagree.colorblendr.ui.activities.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="colorblendr"
+              android:host="preview" />
+      </intent-filter>
+    </activity-alias>
+    <activity android:theme="@android:style/Theme.NoDisplay"
+              android:name="com.drdisagree.colorblendr.ui.activities.ShortcutActivity"
+              android:exported="false"
+              android:taskAffinity=""
+              android:excludeFromRecents="true"
+              android:noHistory="true" />
+    <receiver android:name="com.drdisagree.colorblendr.service.BroadcastListener"
+              android:enabled="true"
+              android:exported="true"
+              android:directBootAware="true">
+      <intent-filter android:priority="999">
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+        <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+      </intent-filter>
+    </receiver>
+    <service android:name="com.drdisagree.colorblendr.service.ScheduledJobService"
+             android:permission="android.permission.BIND_JOB_SERVICE" />
+    <service android:name="com.drdisagree.colorblendr.service.AutoStartService"
+             android:enabled="true"
+             android:foregroundServiceType="specialUse" />
+    <service android:name="com.drdisagree.colorblendr.service.AdbPairingNotification"
+             android:exported="false"
+             android:foregroundServiceType="specialUse" />
+    <receiver android:name="com.drdisagree.colorblendr.service.TaskerIntentReceiver"
+              android:enabled="true"
+              android:exported="true">
+      <intent-filter>
+        <action android:name="com.drdisagree.colorblendr.action.APPLY_CONFIG" />
+      </intent-filter>
+    </receiver>
+    <receiver android:label="RestartServiceWhenStopped"
+              android:name="com.drdisagree.colorblendr.service.RestartBroadcastReceiver"
+              android:enabled="true"
+              android:exported="true" />
+    <provider android:name="com.drdisagree.colorblendr.provider.RemotePrefProvider"
+              android:exported="true"
+              android:authorities="com.drdisagree.colorblendr.samsungfix"
+              android:directBootAware="true" />
+    <provider android:name="rikka.shizuku.ShizukuProvider"
+              android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
+              android:enabled="true"
+              android:exported="true"
+              android:multiprocess="false"
+              android:authorities="com.drdisagree.colorblendr.samsungfix.shizuku" />
+    <provider android:name="androidx.startup.InitializationProvider"
+              android:exported="false"
+              android:authorities="com.drdisagree.colorblendr.samsungfix.androidx-startup">
+      <meta-data android:name="androidx.work.WorkManagerInitializer"
+                 android:value="androidx.startup" />
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                 android:value="androidx.startup" />
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                 android:value="androidx.startup" />
+      <meta-data android:name="okhttp3.internal.platform.PlatformInitializer"
+                 android:value="androidx.startup" />
+      <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                 android:value="androidx.startup" />
+    </provider>
+    <service android:name="androidx.work.impl.background.systemjob.SystemJobService"
+             android:permission="android.permission.BIND_JOB_SERVICE"
+             android:enabled="@bool/enable_system_job_service_default"
+             android:exported="true"
+             android:directBootAware="false" />
+    <service android:name="androidx.work.impl.foreground.SystemForegroundService"
+             android:enabled="@bool/enable_system_foreground_service_default"
+             android:exported="false"
+             android:directBootAware="false" />
+    <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+              android:enabled="true"
+              android:exported="false"
+              android:directBootAware="false" />
+    <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+              android:enabled="false"
+              android:exported="false"
+              android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+              android:permission="android.permission.DUMP"
+              android:enabled="true"
+              android:exported="true"
+              android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+      </intent-filter>
+    </receiver>
+    <activity android:name="androidx.compose.ui.tooling.PreviewActivity"
+              android:exported="true" />
+    <uses-library android:name="androidx.window.extensions"
+                  android:required="false" />
+    <uses-library android:name="androidx.window.sidecar"
+                  android:required="false" />
+    <service android:name="androidx.room.MultiInstanceInvalidationService"
+             android:exported="false"
+             android:directBootAware="true" />
+    <meta-data android:name="moe.shizuku.client.V3_SUPPORT"
+               android:value="true" />
+    <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver"
+              android:permission="android.permission.DUMP"
+              android:enabled="true"
+              android:exported="true"
+              android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+      </intent-filter>
+    </receiver>
+  </application>
+</manifest>

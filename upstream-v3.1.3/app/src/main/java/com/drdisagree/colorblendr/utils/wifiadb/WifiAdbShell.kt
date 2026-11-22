@@ -1,0 +1,442 @@
+package com.drdisagree.colorblendr.utils.wifiadb
+
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.drdisagree.colorblendr.ColorBlendr.Companion.appContext
+import com.drdisagree.colorblendr.utils.wifiadb.WifiAdbShell.clearEnabled
+import com.drdisagree.colorblendr.utils.wifiadb.WifiAdbShell.commandOutput
+import io.github.muntashirakon.adb.AdbPairingRequiredException
+import io.github.muntashirakon.adb.AdbStream
+import io.github.muntashirakon.adb.LocalServices
+import io.github.muntashirakon.adb.android.AdbMdns
+import io.github.muntashirakon.adb.android.AndroidUtils
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.net.InetAddress
+import java.nio.charset.StandardCharsets
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeoutException
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.Volatile
+import kotlin.concurrent.thread
+import kotlin.concurrent.withLock
+
+object WifiAdbShell {
+
+    private val TAG = "WifiAdbShell"
+    private val executor: ExecutorService = Executors.newFixedThreadPool(3)
+    private val execExecutor: ExecutorService = Executors.newCachedThreadPool()
+    private val connectLock = ReentrantLock()
+    private var adbShellStream: AdbStream? = null
+    private val commandOutput = MutableLiveData<CharSequence?>()
+
+    fun watchCommandOutput(): LiveData<CharSequence?> = commandOutput
+
+    fun isMyDeviceConnected(): Boolean {
+        return try {
+            val manager = AdbConnectionManager.getInstance(appContext)
+            manager.isConnected
+        } catch (e: Exception) {
+            Log.e(TAG, "isMyDeviceConnected: ", e)
+            false
+        }
+    }
+
+    private fun dropConnection() {
+        thread(name = "WifiAdbDrop") {
+            try {
+                AdbConnectionManager.getInstance(appContext).disconnect()
+            } catch (th: Throwable) {
+                Log.e(TAG, "dropConnection: ", th)
+            }
+        }
+    }
+
+    @WorkerThread
+    fun ensureConnected(): Boolean {
+        if (isMyDeviceConnected()) return true
+
+        connectLock.withLock {
+            if (isMyDeviceConnected()) return true
+
+            Log.i(TAG, "Wireless ADB not connected; reconnecting")
+            var connected = false
+            autoConnectInternal(object : ConnectionListener {
+                override fun onConnectionSuccess() {
+                    connected = true
+                }
+
+                override fun onConnectionFailed() {}
+            })
+            Log.i(TAG, "Wireless ADB reconnect ${if (connected) "succeeded" else "failed"}")
+            return connected
+        }
+    }
+
+    fun clear() {
+        executor.submit {
+            try {
+                adbShellStream?.close()
+            } catch (e: Exception) {
+                Log.e(TAG, "Error closing adbShellStream", e)
+            }
+            try {
+                AdbConnectionManager.getInstance(appContext).close()
+            } catch (e: Exception) {
+                Log.e(TAG, "Error closing AdbConnectionManager", e)
+            }
+        }
+        executor.shutdown()
+    }
+
+    fun connect(ip: String?, port: Int, callback: ConnectionListener? = null) {
+        executor.submit {
+            try {
+                val manager = AdbConnectionManager.getInstance(appContext)
+                val connectionStatus = try {
+                    manager.connect(ip ?: AndroidUtils.getHostIpAddress(appContext), port)
+                } catch (th: Throwable) {
+                    Log.e(TAG, "connect: ", th)
+                    false
+                }
+                callback?.let {
+                    if (connectionStatus) it.onConnectionSuccess() else it.onConnectionFailed()
+                }
+            } catch (th: Throwable) {
+                Log.e(TAG, "connect: ", th)
+                callback?.onConnectionFailed()
+            }
+        }
+    }
+
+    fun autoConnect(callback: ConnectionListener? = null) {
+        executor.submit { autoConnectInternal(callback) }
+    }
+
+    fun disconnect() {
+        executor.submit {
+            try {
+                val manager = AdbConnectionManager.getInstance(appContext)
+                manager.disconnect()
+            } catch (th: Throwable) {
+                Log.e(TAG, "disconnect: ", th)
+            }
+        }
+    }
+
+    fun getPairingAddress(callback: IpAddressListener?) {
+        executor.submit {
+            val atomicPort = AtomicInteger(-1)
+            val resolveHostAndPort = CountDownLatch(1)
+
+            val adbMdns = AdbMdns(
+                appContext,
+                AdbMdns.SERVICE_TYPE_TLS_PAIRING
+            ) { abc: InetAddress?, port: Int ->
+                atomicPort.set(port)
+                resolveHostAndPort.countDown()
+                callback?.onPortDetected(abc?.hostAddress, port)
+            }
+            adbMdns.start()
+
+            try {
+                if (!resolveHostAndPort.await(3, TimeUnit.MINUTES)) { // Timeout after 3 minutes
+                    callback?.onPortDetected(null, -1)
+                    return@submit
+                }
+            } catch (_: InterruptedException) {
+            } finally {
+                adbMdns.stop()
+            }
+        }
+    }
+
+    fun pair(
+        ip: String?,
+        port: Int,
+        pairingCode: String,
+        pairingListener: PairingListener? = null,
+        connectionListener: ConnectionListener? = null
+    ) {
+        executor.submit {
+            try {
+                execute("kill-server")
+                val manager = AdbConnectionManager.getInstance(appContext)
+                val pairingStatus = manager.pair(
+                    ip ?: AndroidUtils.getHostIpAddress(appContext),
+                    port,
+                    pairingCode
+                )
+                pairingListener?.let {
+                    if (pairingStatus) it.onPairingSuccess() else it.onPairingFailed()
+                }
+                autoConnectInternal(connectionListener)
+            } catch (th: Throwable) {
+                Log.e(TAG, "pair: ", th)
+                pairingListener?.onPairingFailed()
+            }
+        }
+    }
+
+    @WorkerThread
+    private fun autoConnectInternal(callback: ConnectionListener? = null) {
+        try {
+            val manager = AdbConnectionManager.getInstance(appContext)
+            var connected = false
+            try {
+                connected = manager.autoConnect(appContext, 5000)
+            } catch (_: AdbPairingRequiredException) {
+                callback?.onConnectionFailed()
+                return
+            } catch (_: Throwable) {
+            }
+            if (!connected) {
+                connected = manager.connect(5555)
+            }
+            if (connected) {
+                callback?.onConnectionSuccess()
+            } else {
+                callback?.onConnectionFailed()
+            }
+        } catch (th: Throwable) {
+            Log.e(TAG, "autoConnectInternal: ", th)
+            callback?.onConnectionFailed()
+        }
+    }
+
+    @Volatile
+    private var clearEnabled = false
+
+    /**
+     * Runnable that reads output from the ADB shell stream and posts it to [commandOutput].
+     * It continuously reads lines from the input stream, appends them to a StringBuilder,
+     * and updates the LiveData. If [clearEnabled] is true, it clears the StringBuilder
+     * before appending new output.
+     */
+    private val outputGenerator = Runnable {
+        try {
+            BufferedReader(InputStreamReader(adbShellStream!!.openInputStream())).use { reader ->
+                val sb = StringBuilder()
+                var s: String?
+                while (reader.readLine().also { s = it } != null) {
+                    if (clearEnabled) {
+                        sb.delete(0, sb.length)
+                        clearEnabled = false
+                    }
+                    sb.append(s).append("\n")
+                    commandOutput.postValue(sb)
+                }
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Error reading from adbShellStream", e)
+        }
+    }
+
+    private val outputGeneratorOnlyNew = Runnable {
+        try {
+            BufferedReader(InputStreamReader(adbShellStream!!.openInputStream())).use { reader ->
+                var s: String?
+                while (reader.readLine().also { s = it } != null) {
+                    if (clearEnabled) {
+                        clearEnabled = false
+                        continue // optionally skip this line
+                    }
+
+                    // Post only the new line, trimmed
+                    val line = s?.trim()
+                    if (!line.isNullOrEmpty()) {
+                        commandOutput.postValue(line)
+                    }
+                }
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Error reading from adbShellStream", e)
+        }
+    }
+
+    fun execute(command: String) {
+        if (!isMyDeviceConnected()) {
+            Log.e(TAG, "execute: Not connected to any device")
+            return
+        }
+
+        executor.submit {
+            try {
+                if (adbShellStream == null || adbShellStream!!.isClosed) {
+                    val manager = AdbConnectionManager.getInstance(appContext)
+                    adbShellStream = manager.openStream(LocalServices.SHELL)
+                    Thread(outputGeneratorOnlyNew).start()
+                }
+                if (command == "clear") {
+                    clearEnabled = true
+                }
+                adbShellStream!!.openOutputStream().use { os ->
+                    os.write("$command\n".toByteArray(StandardCharsets.UTF_8))
+                    os.flush()
+                    os.write("\n".toByteArray(StandardCharsets.UTF_8))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error executing command: $command", e)
+            }
+        }
+    }
+
+    // Shell.cmd-style synchronous exec: one-shot "shell:" service per call,
+    // stderr merged into stdout, exit code carried by a trailing marker
+    // (interactive adb shell has no exit codes). Reads until the marker line
+    // arrives - never waits for EOF (libadb signals stream end unreliably) -
+    // and a hard timeout guarantees this can never hang the apply flow.
+    // Blocking - call from IO.
+    @WorkerThread
+    fun exec(command: String): AdbCommandResult {
+        if (!ensureConnected()) {
+            return AdbCommandResult(success = false, output = "Device not connected")
+        }
+
+        val streamRef = AtomicReference<AdbStream?>(null)
+        val future = execExecutor.submit<AdbCommandResult> {
+            try {
+                val manager = AdbConnectionManager.getInstance(appContext)
+                val destination = "shell:{ $command; } 2>&1; echo \"$EXIT_MARKER$?\""
+                val stream = manager.openStream(destination)
+                streamRef.set(stream)
+
+                val input = stream.openInputStream()
+                val builder = StringBuilder()
+                val chunk = ByteArray(8192)
+
+                // Marker line ends with '\n'; stop as soon as it lands.
+                while (true) {
+                    val read = try {
+                        input.read(chunk)
+                    } catch (_: IOException) {
+                        break // libadb throws "Stream closed." at stream end
+                    }
+                    if (read == -1) break
+                    builder.append(String(chunk, 0, read, StandardCharsets.UTF_8))
+
+                    val markerIndex = builder.lastIndexOf(EXIT_MARKER)
+                    if (markerIndex != -1 &&
+                        builder.indexOf("\n", markerIndex) != -1
+                    ) {
+                        break
+                    }
+                }
+
+                try {
+                    stream.close()
+                } catch (_: Exception) {
+                }
+
+                val output = builder.toString()
+                val markerIndex = output.lastIndexOf(EXIT_MARKER)
+                if (markerIndex == -1) {
+                    // Stream ended without marker: connection dropped.
+                    dropConnection()
+                    AdbCommandResult(success = false, output = output.trim())
+                } else {
+                    val code = output.substring(markerIndex + EXIT_MARKER.length)
+                        .trim().toIntOrNull() ?: -1
+                    AdbCommandResult(
+                        success = code == 0,
+                        output = output.substring(0, markerIndex).trim()
+                    )
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "exec: $command", e)
+                AdbCommandResult(
+                    success = false,
+                    output = e.message ?: e.javaClass.simpleName
+                )
+            }
+        }
+
+        return try {
+            future.get(EXEC_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+        } catch (_: TimeoutException) {
+            Log.e(TAG, "exec: timed out: $command")
+            future.cancel(true)
+            try {
+                streamRef.get()?.close()
+            } catch (_: Exception) {
+            }
+            dropConnection()
+            AdbCommandResult(success = false, output = "Command timed out")
+        } catch (e: Exception) {
+            Log.e(TAG, "exec: $command", e)
+            AdbCommandResult(
+                success = false,
+                output = e.message ?: e.javaClass.simpleName
+            )
+        }
+    }
+
+    private const val EXIT_MARKER = "<<CB_EXIT:"
+    private const val EXEC_TIMEOUT_MS = 7000L
+
+    fun executeWithObserver(
+        command: String,
+        contains: String,
+        callback: (String) -> Unit
+    ) {
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.post {
+            val tempObserver = object : Observer<CharSequence?> {
+                override fun onChanged(value: CharSequence?) {
+                    value?.let { output ->
+                        var result = output.toString()
+
+                        // Remove all shell prompts like "device:/ $"
+                        result = result.replace(Regex("\\S+:/ \\$"), "")
+                        // Remove the command itself
+                        result = result.replace(command, "")
+                        // Trim leading/trailing whitespace and newlines
+                        result = result.trim()
+
+                        if (result.contains(contains)) {
+                            mainHandler.removeCallbacksAndMessages(null)
+                            commandOutput.removeObserver(this)
+                            callback(result)
+                        }
+                    }
+                }
+            }
+
+            commandOutput.observeForever(tempObserver)
+
+            mainHandler.postDelayed({
+                commandOutput.removeObserver(tempObserver)
+                Log.d(TAG, "executeWithObserver: timed out, observer removed")
+                callback("")
+            }, 500)
+
+            execute(command)
+        }
+    }
+
+    interface IpAddressListener {
+        fun onPortDetected(ip: String?, port: Int)
+    }
+
+    interface PairingListener {
+        fun onPairingSuccess()
+        fun onPairingFailed()
+    }
+
+    interface ConnectionListener {
+        fun onConnectionSuccess()
+        fun onConnectionFailed()
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <color name="color_branding_img">@color/material_dynamic_primary80</color>
+  <color name="ic_launcher_background_dark_shade">@color/material_dynamic_primary80</color>
+  <color name="ic_launcher_background_light_shade">@color/material_dynamic_primary50</color>
+  <color name="m3_card_stroke_color">@color/material_dynamic_neutral_variant20</color>
+  <color name="material_timepicker_button_stroke">res/color-night-v8/material_timepicker_button_stroke.xml</color>
+  <color name="material_timepicker_clockface">res/color-night-v8/material_timepicker_clockface.xml</color>
+  <color name="material_timepicker_modebutton_tint">res/color-night-v8/material_timepicker_modebutton_tint.xml</color>
+</resources>

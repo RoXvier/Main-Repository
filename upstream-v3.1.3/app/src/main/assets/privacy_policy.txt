@@ -1,0 +1,126 @@
+Privacy Policy for ColorBlendr
+==============================
+
+Effective Date: July 26, 2026
+Developer: Mahmudul Hasan Khan
+
+ColorBlendr is an open-source theming utility that allows users to customize **Material You** colors on devices running Android 12+.
+
+Your privacy is important. This app does not collect, track, or share any personal data.
+
+Data Collection and Usage
+-------------------------
+
+ColorBlendr does **not** collect, store, or transmit any personal information or usage data.
+All theming logic and processing occur locally on the device.
+No background tracking, profiling, or analytics are performed.
+The optional Community Creations feature transmits only the minimal data described below — and nothing else.
+
+Internet Usage
+--------------
+
+ColorBlendr uses internet access only for:
+
+1. Displaying images of contributors and translators from remote sources (e.g., GitHub avatars).
+2. The Community Creations feature described in the next section.
+
+No network requests are used for analytics, advertising, or user tracking.
+
+Community Creations
+-------------------
+
+The Community Creations feature lets you browse, preview, vote on, and share color configurations ("creations") made by other users. It involves the following network activity:
+
+1. **Browsing**: The app downloads a public list of creations from a content delivery network (jsDelivr, backed by a public GitHub repository). This is a plain download; no account or identifier is required. Every published creation, and every submission awaiting review, is visible in that repository:
+https://github.com/Mahmud0808/ColorBlendr-Themes
+
+2. **Voting**: To prevent duplicate votes, when you upvote a creation the app sends a **one-way hashed device identifier** (a SHA-256 hash derived from the Android device ID with an app-specific salt) to a Cloudflare Worker operated by the developer. Alongside it, the server derives and stores a **one-way salted hash of your IP address** (never the raw IP). Both hashes are irreversible, cannot be used to track you across apps, and are stored solely to enforce one vote per person — checking the device hash *or* the IP hash so that a VPN or a device reset cannot stack votes — and to restore your own vote state after a reinstall. Voting is entirely optional.
+
+3. **Sharing a creation**: If you choose to submit a creation, the app uploads only the color configuration itself plus the name, description, and optional author name you enter. Submissions pass through Cloudflare Turnstile (a privacy-respecting bot check) and are published as a public pull request on GitHub for human review. Do not include personal information in these fields — anything you enter becomes public. For rate limiting, the server stores the same irreversible hashes described under Voting (a salted hash of the device identifier and a salted hash of your IP address); the raw IP is never stored or published. The same applies when you report a creation.
+
+Creations are pure color data. They contain no code and cannot access your device.
+
+Permissions Used and Justifications
+-----------------------------------
+
+The app requests the following permissions only to enable essential functionality:
+
+1. **Query All Packages**
+	• Purpose: To list installed apps for per-app theming functionality.
+	• Justification: Required for selecting which apps to apply themes to.
+	• Access is entirely local and is never shared or transmitted.
+
+2. **Post Notification**
+	• Purpose: To keep the app's background service alive.
+	• ColorBlendr does **not** read or analyze the contents of your notifications.
+
+3. **Read External Storage / File Access**
+	• Purpose: To read the current wallpaper file for extracting color data.
+	• Accessed locally and not stored or transmitted.
+
+4. **Photos / Media / Images Permission**
+	• Purpose: To allow the user to pick an image and extract colors from it.
+	• The image is processed locally and not stored or uploaded.
+
+5. **Internet Permission**
+	• Purpose: To load profile pictures of app contributors and translators, and to power the optional Community Creations feature (browsing, voting, and sharing color configurations).
+	• Beyond that, no user data is sent or received.
+
+External Links
+--------------
+
+The app may display external links (e.g., GitHub repositories, contributor profiles, or documentation pages).
+When you open such links, you are subject to the **respective privacy policies** of those websites or services.
+ColorBlendr is not responsible for the content, practices, or privacy policies of external websites.
+
+Libraries, Dependencies, and Native Binaries
+--------------------------------------------
+
+ColorBlendr may rely on open-source libraries and Android frameworks strictly to provide functionality (e.g., Material Components, AndroidX libraries).
+These libraries operate locally on your device and do not collect, store, or transmit any personal information.
+The app may also include compiled native binaries (such as .so files) to enable features like local ADB connections or system-level operations.
+All binaries run only on the user’s device and do not communicate with external servers.
+The use of libraries and binaries is limited to providing the required functionality of ColorBlendr, such as interacting with system APIs.
+If in the future any library or binary includes data collection or external communication, this privacy policy will be updated accordingly.
+
+Data Sharing and Third Parties
+------------------------------
+
+ColorBlendr does **not** use analytics, ads, crash reporting, or any third-party SDKs that collect data.
+The Community Creations feature relies on infrastructure providers acting as processors: GitHub (public creation storage and submissions), jsDelivr (content delivery), and Cloudflare (vote handling and bot protection). They receive only the data described in the Community Creations section, subject to their own privacy policies.
+No information is shared with any other third party.
+
+Children's Privacy
+------------------
+
+ColorBlendr is safe for all age groups and does not knowingly collect, store, or process data from children under 13.
+
+Security
+--------
+
+No personal data is collected or stored. The only identifiers ever retained are the irreversible salted hashes described above — the device hash the app sends and a salted hash of your IP address the server derives — neither of which can be reversed to identify you.
+All community submissions are validated against a strict schema on the server, in the public repository, and again on every device, and are human-reviewed before publication.
+
+Open Source Transparency
+------------------------
+
+ColorBlendr is fully open source. You can review the complete source code at:
+https://github.com/Mahmud0808/ColorBlendr
+
+The Community Creations store, including the validation rules applied to every submission, is public as well:
+https://github.com/Mahmud0808/ColorBlendr-Themes
+
+This ensures full transparency and trust.
+
+Changes to This Policy
+----------------------
+
+Any future updates to this privacy policy will be published in the app’s GitHub repository and reflected in the app itself.
+
+Contact
+-------
+
+For questions, suggestions, or privacy concerns, please contact:
+
+Mahmudul Hasan Khan
+GitHub: https://github.com/Mahmud0808

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="monet_style">
+        <item>@string/monet_neutral</item>
+        <item>@string/monet_monochrome</item>
+        <item>@string/monet_tonalspot</item>
+        <item>@string/monet_vibrant</item>
+        <item>@string/monet_rainbow</item>
+        <item>@string/monet_expressive</item>
+        <item>@string/monet_fidelity</item>
+        <item>@string/monet_content</item>
+        <item>@string/monet_fruitsalad</item>
+    </string-array>
+
+    <string-array name="basic_color_codes" translatable="false">
+        <item>#AC6166</item>
+        <item>#A76837</item>
+        <item>#8B7526</item>
+        <item>#608045</item>
+        <item>#34846F</item>
+        <item>#2B8193</item>
+        <item>#5179A9</item>
+        <item>#7A6FAB</item>
+        <item>#9B6593</item>
+    </string-array>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <xml name="backup_rules">res/xml/backup_rules.xml</xml>
+  <xml name="data_extraction_rules">res/xml/data_extraction_rules.xml</xml>
+  <xml name="locales_config">res/xml/locales_config.xml</xml>
+  <xml name="m3_button_group_child_size_change">res/xml/m3_button_group_child_size_change.xml</xml>
+  <xml name="m3_list_item_shape_state_list">res/xml/m3_list_item_shape_state_list.xml</xml>
+  <xml name="m3_split_button_inner_corner_size_state_list">res/xml/m3_split_button_inner_corner_size_state_list.xml</xml>
+  <xml name="m3expressive_button_shape_state_list">res/xml/m3expressive_button_shape_state_list.xml</xml>
+  <xml name="m3expressive_connected_buttons_inner_corner_size_state_list">res/xml/m3expressive_connected_buttons_inner_corner_size_state_list.xml</xml>
+</resources>

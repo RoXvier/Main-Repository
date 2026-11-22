@@ -1,0 +1,84 @@
+name: Feature Request
+description: Suggest a single, specific feature for the app.
+title: "[FEATURE] Your feature request title here"
+labels: [ feature, enhancement ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One feature per issue. Wishlists get closed.
+
+        These are not feature requests:
+
+        - "Add support for my ROM or OEM skin". Open a bug report with the details.
+        - "When is the next update". See the [Telegram channel](https://t.me/DrDsProjects).
+        - Ideas you want to talk through first. See [Discussions](https://github.com/Mahmud0808/ColorBlendr/discussions).
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Before submitting
+      options:
+        - label: I am on the [latest release](https://github.com/Mahmud0808/ColorBlendr/releases/latest) and this feature does not already exist there.
+          required: true
+        - label: I searched [open and closed issues](https://github.com/Mahmud0808/ColorBlendr/issues?q=is%3Aissue%20sort%3Aupdated-desc) and this is not a duplicate.
+          required: true
+        - label: This is one specific feature, not a list of ideas.
+          required: true
+        - label: I understand this may be declined.
+          required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area of the app
+      options:
+        - Colors and palette
+        - Monet styles
+        - Per-app theming
+        - Community creations
+        - Settings
+        - Root / Shizuku / Wireless ADB setup
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Describe the feature
+      description: What it does and where in the app it belongs.
+      placeholder: A per-shade lock so a chosen color survives changing the seed color.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: What you are trying to do today, and why the app makes it hard or impossible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-examples
+    attributes:
+      label: Examples
+      description: Mockups, screenshots, or another app that already does this.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you tried
+      description: Existing options or workarounds you attempted, and why they did not work.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+    validations:
+      required: false

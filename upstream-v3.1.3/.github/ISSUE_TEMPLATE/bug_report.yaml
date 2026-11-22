@@ -1,0 +1,157 @@
+name: Bug Report
+description: Something in the app is broken or behaves incorrectly.
+title: "[BUG] Your bug report title here"
+labels: [ bug ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill every required field. Issues that ignore the template get closed without a reply.
+
+        Check the [FAQ](https://github.com/Mahmud0808/ColorBlendr#faq-) first. These are the most reported things that are not bugs:
+
+        - OneUI system apps keep their own colors. Samsung does not use Material You for its own apps.
+        - Greyed out options need root, or a newer Android version.
+        - Colors staying after uninstall means the service was not disabled first.
+
+        Questions and "does it support X" go to [Discussions](https://github.com/Mahmud0808/ColorBlendr/discussions) or the [Telegram group](https://t.me/DrDsProjectsChat).
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Before submitting
+      options:
+        - label: I am on the [latest release](https://github.com/Mahmud0808/ColorBlendr/releases/latest) and the bug still happens there.
+          required: true
+        - label: I searched [open and closed issues](https://github.com/Mahmud0808/ColorBlendr/issues?q=is%3Aissue%20sort%3Aupdated-desc) and this is not a duplicate.
+          required: true
+        - label: I read the [FAQ](https://github.com/Mahmud0808/ColorBlendr#faq-) and my problem is not explained there.
+          required: true
+        - label: This is a bug report, not a question, feature request or support request.
+          required: true
+        - label: I can capture a logcat if asked for one.
+          required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Exact version from the app's About page. "Latest" is not a version.
+      placeholder: v3.0.1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: work-mode
+    attributes:
+      label: Work method
+      description: Which mode the app runs in.
+      options:
+        - Root
+        - Shizuku
+        - Wireless ADB
+    validations:
+      required: true
+
+  - type: dropdown
+    id: root-manager
+    attributes:
+      label: Root manager
+      options:
+        - Not rooted
+        - Magisk
+        - KernelSU
+        - KernelSU Next
+        - APatch
+        - Other (state it in Additional context)
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: Google Pixel 8 Pro
+    validations:
+      required: true
+
+  - type: input
+    id: android-version
+    attributes:
+      label: Android version and build
+      description: Android version plus the build number from Settings, About phone.
+      placeholder: Android 16 (BP31.250610.004)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: skin
+    attributes:
+      label: OS / skin
+      description: OEM skins theme their own apps differently, so this decides whether a color issue can be fixed at all.
+      options:
+        - Pixel / stock Android
+        - OneUI (Samsung)
+        - HyperOS / MIUI (Xiaomi)
+        - ColorOS / realme UI / OxygenOS
+        - Custom ROM (name it in Additional context)
+        - Other (name it in Additional context)
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: What goes wrong. One bug per issue. File separate issues for unrelated problems.
+      placeholder: Applying a theme leaves the quick settings panel on the old colors until reboot.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps someone else can follow on their own device. "It doesn't work" is not a reproduction.
+      value: |
+        1. Open ...
+        2. Tap ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Required for crashes. Capture with the device connected:
+        `adb logcat -c`, reproduce the bug, then `adb logcat -d > log.txt`.
+        Paste the relevant part here or attach the file.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or screen recording
+      description: Add these for anything visual.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Custom ROM name, other theming apps installed, anything else relevant.
+    validations:
+      required: false

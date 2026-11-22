@@ -1,0 +1,542 @@
+package com.drdisagree.colorblendr;
+
+/* loaded from: classes13.dex */
+public final class R {
+
+    public static final class array {
+        public static int basic_color_codes = 0x7f030000;
+        public static int colorspec_version_descs = 0x7f030001;
+        public static int colorspec_versions = 0x7f030002;
+        public static int contrast_level_descs = 0x7f030003;
+        public static int contrast_levels = 0x7f030004;
+        public static int monet_style = 0x7f030005;
+
+        private array() {
+        }
+    }
+
+    public static final class color {
+        public static int black = 0x7f060021;
+        public static int color_branding_img = 0x7f060034;
+        public static int ic_launcher_background_dark_shade = 0x7f060065;
+        public static int ic_launcher_background_light_shade = 0x7f060066;
+        public static int m3_card_stroke_color = 0x7f060074;
+        public static int transparent = 0x7f0603c7;
+        public static int white = 0x7f0603ca;
+
+        private color() {
+        }
+    }
+
+    public static final class dimen {
+        public static int about_button_icon_size = 0x7f070051;
+        public static int container_corner_radius = 0x7f07005e;
+        public static int container_corner_radius_round = 0x7f07005f;
+        public static int container_corner_radius_small = 0x7f070060;
+        public static int container_margin_bottom = 0x7f070061;
+        public static int container_margin_bottom_small = 0x7f070062;
+        public static int container_margin_horizontal = 0x7f070063;
+        public static int default_corner_radius = 0x7f070065;
+        public static int reset_icon_size = 0x7f070464;
+
+        private dimen() {
+        }
+    }
+
+    public static final class drawable {
+        public static int buymeacoffee_bg = 0x7f080081;
+        public static int buymeacoffee_fg = 0x7f080082;
+        public static int ic_adb = 0x7f08008b;
+        public static int ic_battery_landscape_bg = 0x7f08008e;
+        public static int ic_battery_landscape_fg = 0x7f08008f;
+        public static int ic_branding_image = 0x7f080090;
+        public static int ic_github = 0x7f08009b;
+        public static int ic_launcher_background = 0x7f08009d;
+        public static int ic_launcher_foreground = 0x7f08009e;
+        public static int ic_launcher_notification = 0x7f08009f;
+        public static int ic_notification = 0x7f0800a8;
+        public static int ic_notification_error = 0x7f0800a9;
+        public static int ic_onboarding_img = 0x7f0800aa;
+        public static int ic_service = 0x7f0800ac;
+        public static int ic_stop = 0x7f0800ad;
+        public static int ic_user_account = 0x7f0800ae;
+        public static int img_drdisagree = 0x7f0800b0;
+
+        private drawable() {
+        }
+    }
+
+    public static final class mipmap {
+        public static int ic_launcher = 0x7f0e0000;
+        public static int ic_launcher_background = 0x7f0e0001;
+        public static int ic_launcher_foreground = 0x7f0e0002;
+        public static int ic_launcher_round = 0x7f0e0003;
+
+        private mipmap() {
+        }
+    }
+
+    public static final class plurals {
+        public static int community_applies = 0x7f0f0000;
+        public static int total_words_translated = 0x7f0f0002;
+
+        private plurals() {
+        }
+    }
+
+    public static final class string {
+        public static int about_this_app_desc = 0x7f10001b;
+        public static int about_this_app_title = 0x7f10001c;
+        public static int accent_saturation = 0x7f10001d;
+        public static int accurate_shades_desc = 0x7f10001e;
+        public static int accurate_shades_title = 0x7f10001f;
+        public static int adb_connection_failed_message = 0x7f100020;
+        public static int adb_connection_failed_title = 0x7f100021;
+        public static int adb_connection_success_message = 0x7f100022;
+        public static int adb_connection_success_title = 0x7f100023;
+        public static int adb_detection_timeout = 0x7f100024;
+        public static int advanced_settings = 0x7f100025;
+        public static int advanced_settings_desc = 0x7f100026;
+        public static int android_13_required = 0x7f100027;
+        public static int android_14_required = 0x7f100028;
+        public static int anonymous = 0x7f10002c;
+        public static int app_colors_apply_failed = 0x7f10002d;
+        public static int app_colors_edit = 0x7f10002e;
+        public static int app_colors_edited = 0x7f10002f;
+        public static int app_colors_empty = 0x7f100030;
+        public static int app_colors_empty_desc = 0x7f100031;
+        public static int app_colors_filter_all = 0x7f100032;
+        public static int app_colors_filter_own = 0x7f100033;
+        public static int app_colors_filter_themed = 0x7f100034;
+        public static int app_colors_filter_title = 0x7f100035;
+        public static int app_colors_hint = 0x7f100036;
+        public static int app_colors_preset = 0x7f100037;
+        public static int app_colors_reset_message = 0x7f100038;
+        public static int app_colors_reset_title = 0x7f100039;
+        public static int app_colors_themed = 0x7f10003a;
+        public static int app_colors_unavailable = 0x7f10003b;
+        public static int app_moto = 0x7f10003c;
+        public static int app_name = 0x7f10003d;
+        public static int app_restart = 0x7f10003e;
+        public static int app_restart_failed = 0x7f10003f;
+        public static int app_restart_hint = 0x7f100040;
+        public static int app_service_desc_off = 0x7f100041;
+        public static int app_service_desc_on = 0x7f100042;
+        public static int app_service_title = 0x7f100043;
+        public static int author_optional = 0x7f100045;
+        public static int back = 0x7f100046;
+        public static int background_lightness = 0x7f100047;
+        public static int background_saturation = 0x7f100048;
+        public static int background_service_notification_channel_text = 0x7f100049;
+        public static int background_service_notification_channel_title = 0x7f10004a;
+        public static int background_service_notification_text = 0x7f10004b;
+        public static int background_service_notification_title = 0x7f10004c;
+        public static int backup = 0x7f10004d;
+        public static int backup_fail = 0x7f10004e;
+        public static int backup_restore_desc = 0x7f10004f;
+        public static int backup_restore_title = 0x7f100050;
+        public static int backup_success = 0x7f100051;
+        public static int basic_colors = 0x7f100052;
+        public static int btn_continue = 0x7f10005e;
+        public static int buymeacoffee_desc = 0x7f10005f;
+        public static int buymeacoffee_title = 0x7f100060;
+        public static int cancel = 0x7f100068;
+        public static int cannot_override_color = 0x7f100069;
+        public static int choose_method = 0x7f10006d;
+        public static int close = 0x7f10006f;
+        public static int color_code = 0x7f100084;
+        public static int color_original = 0x7f100085;
+        public static int color_palette_desc = 0x7f100086;
+        public static int color_palette_reset_message = 0x7f100087;
+        public static int color_palette_reset_title = 0x7f100088;
+        public static int color_palette_root_warn = 0x7f100089;
+        public static int color_palette_rootless_warn = 0x7f10008a;
+        public static int color_palette_title = 0x7f10008b;
+        public static int color_picker_preview = 0x7f10008c;
+        public static int color_tokens_category_error = 0x7f10008d;
+        public static int color_tokens_category_fixed = 0x7f10008e;
+        public static int color_tokens_category_framework = 0x7f10008f;
+        public static int color_tokens_category_key_color = 0x7f100090;
+        public static int color_tokens_category_primary = 0x7f100091;
+        public static int color_tokens_category_secondary = 0x7f100092;
+        public static int color_tokens_category_surface = 0x7f100093;
+        public static int color_tokens_category_system_ui = 0x7f100094;
+        public static int color_tokens_category_tertiary = 0x7f100095;
+        public static int color_tokens_edited = 0x7f100096;
+        public static int color_tokens_empty = 0x7f100097;
+        public static int color_tokens_empty_desc = 0x7f100098;
+        public static int color_tokens_filter_all = 0x7f100099;
+        public static int color_tokens_filter_edited = 0x7f10009a;
+        public static int color_tokens_filter_title = 0x7f10009b;
+        public static int color_tokens_from_shade = 0x7f10009c;
+        public static int color_tokens_guide_title = 0x7f10009d;
+        public static int color_tokens_mode_dark = 0x7f10009e;
+        public static int color_tokens_mode_light = 0x7f10009f;
+        public static int color_tokens_pick_color = 0x7f1000a0;
+        public static int color_tokens_reset_message = 0x7f1000a1;
+        public static int color_tokens_reset_title = 0x7f1000a2;
+        public static int color_tokens_source_custom = 0x7f1000a3;
+        public static int color_tokens_source_palette = 0x7f1000a4;
+        public static int color_tokens_summary = 0x7f1000a5;
+        public static int color_tokens_title = 0x7f1000a6;
+        public static int color_tokens_usage_hint = 0x7f1000a7;
+        public static int color_unknown = 0x7f1000a8;
+        public static int colors = 0x7f1000a9;
+        public static int colorspec_2026_required = 0x7f1000aa;
+        public static int colorspec_desc = 0x7f1000ab;
+        public static int colorspec_title = 0x7f1000ac;
+        public static int community_dark_only = 0x7f1000ad;
+        public static int community_empty = 0x7f1000ae;
+        public static int community_empty_desc = 0x7f1000af;
+        public static int community_light_only = 0x7f1000b0;
+        public static int community_low_contrast = 0x7f1000b1;
+        public static int community_text_counter = 0x7f1000b2;
+        public static int community_text_too_short = 0x7f1000b3;
+        public static int community_themes = 0x7f1000b4;
+        public static int complete_verification = 0x7f1000b5;
+        public static int confirmation_desc = 0x7f1000b6;
+        public static int confirmation_title = 0x7f1000b7;
+        public static int contrast_desc = 0x7f1000b8;
+        public static int contrast_title = 0x7f1000b9;
+        public static int contributors = 0x7f1000ba;
+        public static int copy = 0x7f1000bb;
+        public static int crash_log_clear = 0x7f1000bc;
+        public static int crash_log_copied = 0x7f1000bd;
+        public static int crash_log_copy = 0x7f1000be;
+        public static int crash_log_desc = 0x7f1000bf;
+        public static int crash_log_empty = 0x7f1000c0;
+        public static int crash_log_empty_desc = 0x7f1000c1;
+        public static int crash_log_title = 0x7f1000c2;
+        public static int custom_accent_color_summary = 0x7f1000c3;
+        public static int custom_primary_color_desc = 0x7f1000c4;
+        public static int custom_primary_color_required = 0x7f1000c5;
+        public static int custom_primary_color_title = 0x7f1000c6;
+        public static int custom_secondary_color_desc = 0x7f1000c7;
+        public static int custom_tertiary_color_title = 0x7f1000c8;
+        public static int darker_launcher_icons_desc = 0x7f1000c9;
+        public static int darker_launcher_icons_title = 0x7f1000ca;
+        public static int delete = 0x7f1000cd;
+        public static int delete_style_confirmation_desc = 0x7f1000ce;
+        public static int delete_style_confirmation_title = 0x7f1000cf;
+        public static int description = 0x7f1000d0;
+        public static int dev_bio = 0x7f1000d1;
+        public static int dev_name = 0x7f1000d2;
+        public static int developer_mode_already_enabled = 0x7f1000d3;
+        public static int developer_mode_enabled = 0x7f1000d4;
+        public static int developer_options = 0x7f1000d5;
+        public static int developer_options_not_available = 0x7f1000d6;
+        public static int disable_battery_optimization_hint = 0x7f1000d7;
+        public static int dismiss = 0x7f1000d8;
+        public static int done = 0x7f1000d9;
+        public static int edit = 0x7f1000db;
+        public static int enable_wifi = 0x7f1000dc;
+        public static int enter_pairing_code = 0x7f1000dd;
+        public static int enter_six_digit_pairing_code = 0x7f1000de;
+        public static int error_overlay_operation = 0x7f1000e1;
+        public static int error_root_unavailable = 0x7f1000e2;
+        public static int error_shizuku_service_unavailable = 0x7f1000e3;
+        public static int error_shizuku_unavailable = 0x7f1000e4;
+        public static int error_wireless_adb_unavailable = 0x7f1000e5;
+        public static int file_access_permission_required = 0x7f1000e9;
+        public static int filter_all = 0x7f1000ea;
+        public static int filter_app_category = 0x7f1000eb;
+        public static int filter_launchable_apps = 0x7f1000ec;
+        public static int filter_system_apps = 0x7f1000ed;
+        public static int filter_user_apps = 0x7f1000ee;
+        public static int force_per_app_theme_desc = 0x7f1000ef;
+        public static int force_per_app_theme_title = 0x7f1000f0;
+        public static int github = 0x7f1000f1;
+        public static int grant = 0x7f1000f2;
+        public static int grant_all_permissions = 0x7f1000f3;
+        public static int grant_permission = 0x7f1000f4;
+        public static int icon = 0x7f1000f6;
+        public static int invalid_theme_json = 0x7f1000fa;
+        public static int legacy_tokens_desc = 0x7f1000fc;
+        public static int legacy_tokens_title = 0x7f1000fd;
+        public static int long_press_to_reset = 0x7f1000fe;
+        public static int meet_the_developer = 0x7f100176;
+        public static int mode_one_desc = 0x7f100177;
+        public static int mode_one_title = 0x7f100178;
+        public static int mode_specific_theme_desc = 0x7f100179;
+        public static int mode_specific_theme_title = 0x7f10017a;
+        public static int mode_three_desc = 0x7f10017b;
+        public static int mode_three_title = 0x7f10017c;
+        public static int mode_two_desc = 0x7f10017d;
+        public static int mode_two_title = 0x7f10017e;
+        public static int monet_cmf = 0x7f10017f;
+        public static int monet_cmf_desc = 0x7f100180;
+        public static int monet_content = 0x7f100181;
+        public static int monet_content_desc = 0x7f100182;
+        public static int monet_expressive = 0x7f100183;
+        public static int monet_expressive_desc = 0x7f100184;
+        public static int monet_fidelity = 0x7f100185;
+        public static int monet_fidelity_desc = 0x7f100186;
+        public static int monet_fruitsalad = 0x7f100187;
+        public static int monet_fruitsalad_desc = 0x7f100188;
+        public static int monet_monochrome = 0x7f100189;
+        public static int monet_monochrome_desc = 0x7f10018a;
+        public static int monet_neutral = 0x7f10018b;
+        public static int monet_neutral_desc = 0x7f10018c;
+        public static int monet_rainbow = 0x7f10018d;
+        public static int monet_rainbow_desc = 0x7f10018e;
+        public static int monet_tonalspot = 0x7f10018f;
+        public static int monet_tonalspot_desc = 0x7f100190;
+        public static int monet_vibrant = 0x7f100191;
+        public static int monet_vibrant_desc = 0x7f100192;
+        public static int nav_rail_collapse = 0x7f1001db;
+        public static int nav_rail_expand = 0x7f1001dd;
+        public static int neutral_1 = 0x7f1001e0;
+        public static int neutral_2 = 0x7f1001e1;
+        public static int news = 0x7f1001e2;
+        public static int no_apps_found = 0x7f1001e3;
+        public static int no_apps_found_desc = 0x7f1001e4;
+        public static int no_browser_found = 0x7f1001e5;
+        public static int note_title = 0x7f1001e7;
+        public static int notification_access_not_granted = 0x7f1001e8;
+        public static int notification_settings = 0x7f1001e9;
+        public static int notification_style_error = 0x7f1001ea;
+        public static int ok = 0x7f1001eb;
+        public static int onboarding_image = 0x7f1001ec;
+        public static int opt_selected1 = 0x7f1001ed;
+        public static int opt_selected2 = 0x7f1001ee;
+        public static int optimization = 0x7f1001ef;
+        public static int override = 0x7f1001f0;
+        public static int pairing = 0x7f1001f1;
+        public static int pairing_notification_hint = 0x7f1001f2;
+        public static int palette_error = 0x7f1001f3;
+        public static int palette_neutral = 0x7f1001f4;
+        public static int palette_neutral_variant = 0x7f1001f5;
+        public static int per_app_overlay_rejected = 0x7f1001fb;
+        public static int per_app_theme = 0x7f1001fc;
+        public static int per_app_theme_warn = 0x7f1001fd;
+        public static int perm_four_desc = 0x7f1001fe;
+        public static int perm_four_title = 0x7f1001ff;
+        public static int perm_one_desc = 0x7f100200;
+        public static int perm_one_title = 0x7f100201;
+        public static int perm_three_desc = 0x7f100202;
+        public static int perm_three_title = 0x7f100203;
+        public static int perm_two_desc = 0x7f100204;
+        public static int perm_two_title = 0x7f100205;
+        public static int permission_must_be_granted = 0x7f100206;
+        public static int permissions = 0x7f100207;
+        public static int pitch_black_settings_workaround_desc = 0x7f100208;
+        public static int pitch_black_settings_workaround_title = 0x7f100209;
+        public static int pitch_black_theme_desc = 0x7f10020a;
+        public static int pitch_black_theme_required = 0x7f10020b;
+        public static int pitch_black_theme_title = 0x7f10020c;
+        public static int pixel_launcher_required = 0x7f10020d;
+        public static int preview_apply = 0x7f10020e;
+        public static int preview_applying = 0x7f10020f;
+        public static int preview_discard = 0x7f100210;
+        public static int preview_pending_apply_first = 0x7f100211;
+        public static int primary = 0x7f100212;
+        public static int privacy_policy = 0x7f100213;
+        public static int privacy_policy_desc = 0x7f100214;
+        public static int reorder_style = 0x7f100217;
+        public static int report = 0x7f100218;
+        public static int report_failed = 0x7f100219;
+        public static int report_sent = 0x7f10021a;
+        public static int report_theme_desc = 0x7f10021b;
+        public static int report_theme_title = 0x7f10021c;
+        public static int reset = 0x7f10021d;
+        public static int restore = 0x7f10021e;
+        public static int restore_fail = 0x7f10021f;
+        public static int retry = 0x7f100220;
+        public static int root_required = 0x7f100221;
+        public static int root_service_not_found = 0x7f100222;
+        public static int save = 0x7f100224;
+        public static int save_current_style = 0x7f100225;
+        public static int saved_styles_divider = 0x7f100226;
+        public static int screen_off_update_desc = 0x7f100227;
+        public static int screen_off_update_title = 0x7f100228;
+        public static int search_by_color = 0x7f100229;
+        public static int search_hint = 0x7f10022a;
+        public static int searching_pairing_code = 0x7f10022d;
+        public static int secondary = 0x7f100230;
+        public static int seed_color_picker_desc = 0x7f100231;
+        public static int seed_color_picker_title = 0x7f100232;
+        public static int select_method = 0x7f100233;
+        public static int semitransparent_launcher_desc = 0x7f100235;
+        public static int semitransparent_launcher_title = 0x7f100236;
+        public static int settings = 0x7f100237;
+        public static int share_theme = 0x7f100238;
+        public static int share_theme_info = 0x7f100239;
+        public static int share_theme_message = 0x7f10023a;
+        public static int shizuku_service_not_found = 0x7f10023b;
+        public static int something_went_wrong = 0x7f10023f;
+        public static int sort_by = 0x7f100240;
+        public static int sort_downloads = 0x7f100241;
+        public static int sort_latest = 0x7f100242;
+        public static int sort_trending = 0x7f100243;
+        public static int sort_upvotes = 0x7f100244;
+        public static int start = 0x7f100245;
+        public static int styles = 0x7f10024a;
+        public static int submit = 0x7f10024b;
+        public static int submitting_theme = 0x7f10024c;
+        public static int support = 0x7f10024d;
+        public static int tasker_integration_desc = 0x7f100250;
+        public static int tasker_integration_title = 0x7f100251;
+        public static int tasker_setup_guide_title = 0x7f100252;
+        public static int tertiary = 0x7f100254;
+        public static int test_theme = 0x7f100255;
+        public static int test_theme_hint = 0x7f100256;
+        public static int theme = 0x7f100257;
+        public static int theme_description = 0x7f100258;
+        public static int theme_description_too_few_words = 0x7f100259;
+        public static int theme_name = 0x7f10025a;
+        public static int theme_name_invalid_chars = 0x7f10025b;
+        public static int theme_name_too_few_letters = 0x7f10025c;
+        public static int theme_submit_failed = 0x7f10025d;
+        public static int theme_submitted = 0x7f10025e;
+        public static int this_cannot_be_undone = 0x7f10025f;
+        public static int tint_text_desc = 0x7f100260;
+        public static int tint_text_title = 0x7f100261;
+        public static int title = 0x7f100262;
+        public static int title_and_desc_cant_be_empty = 0x7f100263;
+        public static int title_cant_be_empty = 0x7f100264;
+        public static int token_usage_background = 0x7f100265;
+        public static int token_usage_brand_a = 0x7f100266;
+        public static int token_usage_brand_b = 0x7f100267;
+        public static int token_usage_brand_c = 0x7f100268;
+        public static int token_usage_brand_d = 0x7f100269;
+        public static int token_usage_clock_hour = 0x7f10026a;
+        public static int token_usage_clock_minute = 0x7f10026b;
+        public static int token_usage_clock_second = 0x7f10026c;
+        public static int token_usage_control_activated = 0x7f10026d;
+        public static int token_usage_control_highlight = 0x7f10026e;
+        public static int token_usage_control_normal = 0x7f10026f;
+        public static int token_usage_error = 0x7f100270;
+        public static int token_usage_error_container = 0x7f100271;
+        public static int token_usage_error_dim = 0x7f100272;
+        public static int token_usage_gen_widget = 0x7f100273;
+        public static int token_usage_inverse_on_surface = 0x7f100274;
+        public static int token_usage_inverse_primary = 0x7f100275;
+        public static int token_usage_inverse_surface = 0x7f100276;
+        public static int token_usage_on_background = 0x7f100277;
+        public static int token_usage_on_error = 0x7f100278;
+        public static int token_usage_on_error_container = 0x7f100279;
+        public static int token_usage_on_primary = 0x7f10027a;
+        public static int token_usage_on_primary_container = 0x7f10027b;
+        public static int token_usage_on_primary_fixed = 0x7f10027c;
+        public static int token_usage_on_primary_fixed_variant = 0x7f10027d;
+        public static int token_usage_on_secondary = 0x7f10027e;
+        public static int token_usage_on_secondary_container = 0x7f10027f;
+        public static int token_usage_on_secondary_fixed = 0x7f100280;
+        public static int token_usage_on_secondary_fixed_variant = 0x7f100281;
+        public static int token_usage_on_shade_active = 0x7f100282;
+        public static int token_usage_on_shade_active_variant = 0x7f100283;
+        public static int token_usage_on_shade_inactive = 0x7f100284;
+        public static int token_usage_on_shade_inactive_variant = 0x7f100285;
+        public static int token_usage_on_surface = 0x7f100286;
+        public static int token_usage_on_surface_variant = 0x7f100287;
+        public static int token_usage_on_tertiary = 0x7f100288;
+        public static int token_usage_on_tertiary_container = 0x7f100289;
+        public static int token_usage_on_tertiary_fixed = 0x7f10028a;
+        public static int token_usage_on_tertiary_fixed_variant = 0x7f10028b;
+        public static int token_usage_on_theme_app = 0x7f10028c;
+        public static int token_usage_on_theme_app_ring = 0x7f10028d;
+        public static int token_usage_outline = 0x7f10028e;
+        public static int token_usage_outline_variant = 0x7f10028f;
+        public static int token_usage_overview_background = 0x7f100290;
+        public static int token_usage_palette_key_color_error = 0x7f100291;
+        public static int token_usage_palette_key_color_neutral = 0x7f100292;
+        public static int token_usage_palette_key_color_neutral_variant = 0x7f100293;
+        public static int token_usage_palette_key_color_primary = 0x7f100294;
+        public static int token_usage_palette_key_color_secondary = 0x7f100295;
+        public static int token_usage_palette_key_color_tertiary = 0x7f100296;
+        public static int token_usage_primary = 0x7f100297;
+        public static int token_usage_primary_container = 0x7f100298;
+        public static int token_usage_primary_dim = 0x7f100299;
+        public static int token_usage_primary_fixed = 0x7f10029a;
+        public static int token_usage_primary_fixed_dim = 0x7f10029b;
+        public static int token_usage_scrim = 0x7f10029c;
+        public static int token_usage_secondary = 0x7f10029d;
+        public static int token_usage_secondary_container = 0x7f10029e;
+        public static int token_usage_secondary_dim = 0x7f10029f;
+        public static int token_usage_secondary_fixed = 0x7f1002a0;
+        public static int token_usage_secondary_fixed_dim = 0x7f1002a1;
+        public static int token_usage_shade_active = 0x7f1002a2;
+        public static int token_usage_shade_disabled = 0x7f1002a3;
+        public static int token_usage_shade_inactive = 0x7f1002a4;
+        public static int token_usage_shadow = 0x7f1002a5;
+        public static int token_usage_surface = 0x7f1002a6;
+        public static int token_usage_surface_bright = 0x7f1002a7;
+        public static int token_usage_surface_container = 0x7f1002a8;
+        public static int token_usage_surface_container_high = 0x7f1002a9;
+        public static int token_usage_surface_container_highest = 0x7f1002aa;
+        public static int token_usage_surface_container_low = 0x7f1002ab;
+        public static int token_usage_surface_container_lowest = 0x7f1002ac;
+        public static int token_usage_surface_dim = 0x7f1002ad;
+        public static int token_usage_surface_tint = 0x7f1002ae;
+        public static int token_usage_surface_variant = 0x7f1002af;
+        public static int token_usage_tertiary = 0x7f1002b0;
+        public static int token_usage_tertiary_container = 0x7f1002b1;
+        public static int token_usage_tertiary_dim = 0x7f1002b2;
+        public static int token_usage_tertiary_fixed = 0x7f1002b3;
+        public static int token_usage_tertiary_fixed_dim = 0x7f1002b4;
+        public static int token_usage_text_hint_inverse = 0x7f1002b5;
+        public static int token_usage_text_primary_inverse = 0x7f1002b6;
+        public static int token_usage_text_primary_inverse_disable_only = 0x7f1002b7;
+        public static int token_usage_text_secondary_and_tertiary_inverse = 0x7f1002b8;
+        public static int token_usage_text_secondary_and_tertiary_inverse_disabled = 0x7f1002b9;
+        public static int token_usage_theme_app = 0x7f1002ba;
+        public static int token_usage_theme_app_ring = 0x7f1002bb;
+        public static int token_usage_theme_notif = 0x7f1002bc;
+        public static int token_usage_under_surface = 0x7f1002bd;
+        public static int token_usage_weather_temp = 0x7f1002be;
+        public static int token_usage_widget_background = 0x7f1002bf;
+        public static int total_contributions = 0x7f1002c2;
+        public static int translators = 0x7f1002c3;
+        public static int try_this_creation = 0x7f1002c4;
+        public static int update = 0x7f1002c5;
+        public static int update_style_confirmation_desc = 0x7f1002c6;
+        public static int update_style_confirmation_title = 0x7f1002c7;
+        public static int upvote = 0x7f1002c8;
+        public static int verifying_human = 0x7f1002c9;
+        public static int version_codes = 0x7f1002ca;
+        public static int view_all = 0x7f1002cb;
+        public static int wallpaper_colors = 0x7f1002cc;
+        public static int wallpaper_refresh = 0x7f1002cd;
+        public static int wallpaper_refresh_applied = 0x7f1002ce;
+        public static int wallpaper_refresh_apply_failed = 0x7f1002cf;
+        public static int wallpaper_refresh_no_colors = 0x7f1002d0;
+        public static int wallpaper_refresh_preview = 0x7f1002d1;
+        public static int wallpaper_refresh_read = 0x7f1002d2;
+        public static int wifi_connection_required = 0x7f1002d3;
+        public static int wireless_adb_not_connected = 0x7f1002d4;
+        public static int wireless_debugging_guide_1 = 0x7f1002d5;
+        public static int wireless_debugging_guide_2 = 0x7f1002d6;
+        public static int wireless_debugging_guide_3 = 0x7f1002d7;
+        public static int wireless_debugging_important_notice = 0x7f1002d8;
+
+        private string() {
+        }
+    }
+
+    public static final class style {
+        public static int AppMaterialAlertDialog = 0x7f11000b;
+        public static int Base_Theme = 0x7f11004b;
+        public static int Base_Theme_ColorBlendr = 0x7f11005a;
+        public static int Base_Theme_ColorBlendr_SplashScreen = 0x7f11005b;
+        public static int DialogNegativeButton = 0x7f11013a;
+        public static int DialogPositiveButton = 0x7f11013b;
+        public static int SnackBarStyle = 0x7f11020d;
+        public static int SnackBarStyle_Button = 0x7f11020e;
+        public static int SnackBarStyle_TextView = 0x7f11020f;
+
+        private style() {
+        }
+    }
+
+    public static final class xml {
+        public static int backup_rules = 0x7f130000;
+        public static int data_extraction_rules = 0x7f130001;
+        public static int locales_config = 0x7f130002;
+
+        private xml() {
+        }
+    }
+
+    private R() {
+    }
+}

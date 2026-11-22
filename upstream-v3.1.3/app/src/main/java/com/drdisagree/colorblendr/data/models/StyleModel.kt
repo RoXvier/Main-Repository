@@ -1,0 +1,12 @@
+package com.drdisagree.colorblendr.data.models
+
+import com.drdisagree.colorblendr.data.enums.MONET
+
+data class StyleModel(
+    val titleResId: Int = 0,
+    val descriptionResId: Int = 0,
+    val isEnabled: Boolean = false,
+    val disabledReason: Int = 0,
+    val monetStyle: MONET,
+    val customStyle: CustomStyleModel? = null
+)

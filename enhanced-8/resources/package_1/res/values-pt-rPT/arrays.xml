@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <string-array name="colorspec_version_descs">
+    <item>Original Material You colors, used by every style</item>
+    <item>Material 3 Expressive colors from Android 16 for Neutral, Tonal Spot, Vibrant and Expressive. Other styles stay on 2021.</item>
+    <item>Same as 2025, and unlocks the CMF style</item>
+  </string-array>
+  <string-array name="contrast_level_descs">
+    <item>Default Material You contrast</item>
+    <item>Stronger separation between colors</item>
+    <item>Maximum separation for easier reading</item>
+  </string-array>
+  <string-array name="contrast_levels">
+    <item>Standard</item>
+    <item>Medium</item>
+    <item>High</item>
+  </string-array>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <animator name="chevron_checked_unchecked">res/animator/chevron_checked_unchecked.xml</animator>
+  <animator name="chevron_unchecked_checked">res/animator/chevron_unchecked_checked.xml</animator>
+  <animator name="design_appbar_state_list_animator">res/animator/design_appbar_state_list_animator.xml</animator>
+  <animator name="design_fab_hide_motion_spec">res/animator/design_fab_hide_motion_spec.xml</animator>
+  <animator name="design_fab_show_motion_spec">res/animator/design_fab_show_motion_spec.xml</animator>
+  <animator name="fragment_close_enter">res/animator/fragment_close_enter.xml</animator>
+  <animator name="fragment_close_exit">res/animator/fragment_close_exit.xml</animator>
+  <animator name="fragment_fade_enter">res/animator/fragment_fade_enter.xml</animator>
+  <animator name="fragment_fade_exit">res/animator/fragment_fade_exit.xml</animator>
+  <animator name="fragment_open_enter">res/animator/fragment_open_enter.xml</animator>
+  <animator name="fragment_open_exit">res/animator/fragment_open_exit.xml</animator>
+  <animator name="m3_appbar_state_list_animator">res/animator/m3_appbar_state_list_animator.xml</animator>
+  <animator name="m3_btn_elevated_btn_state_list_anim">res/animator/m3_btn_elevated_btn_state_list_anim.xml</animator>
+  <animator name="m3_btn_state_list_anim">res/animator/m3_btn_state_list_anim.xml</animator>
+  <animator name="m3_card_elevated_state_list_anim">res/animator/m3_card_elevated_state_list_anim.xml</animator>
+  <animator name="m3_card_state_list_anim">res/animator/m3_card_state_list_anim.xml</animator>
+  <animator name="m3_chip_state_list_anim">res/animator/m3_chip_state_list_anim.xml</animator>
+  <animator name="m3_elevated_chip_state_list_anim">res/animator/m3_elevated_chip_state_list_anim.xml</animator>
+  <animator name="m3_extended_fab_change_size_collapse_motion_spec">res/animator/m3_extended_fab_change_size_collapse_motion_spec.xml</animator>
+  <animator name="m3_extended_fab_change_size_expand_motion_spec">res/animator/m3_extended_fab_change_size_expand_motion_spec.xml</animator>
+  <animator name="m3_extended_fab_hide_motion_spec">res/animator/m3_extended_fab_hide_motion_spec.xml</animator>
+  <animator name="m3_extended_fab_show_motion_spec">res/animator/m3_extended_fab_show_motion_spec.xml</animator>
+  <animator name="m3_extended_fab_state_list_animator">res/animator/m3_extended_fab_state_list_animator.xml</animator>
+  <animator name="m3_fab_state_list_animator">res/animator/m3_fab_state_list_animator.xml</animator>
+  <animator name="m3_split_button_chevron_overshoot_interpolator">res/animator/m3_split_button_chevron_overshoot_interpolator.xml</animator>
+  <animator name="m3_split_button_chevron_reverse_rotation">res/animator/m3_split_button_chevron_reverse_rotation.xml</animator>
+  <animator name="m3_split_button_chevron_rotation">res/animator/m3_split_button_chevron_rotation.xml</animator>
+  <animator name="mtrl_btn_state_list_anim">res/animator/mtrl_btn_state_list_anim.xml</animator>
+  <animator name="mtrl_btn_unelevated_state_list_anim">res/animator/mtrl_btn_unelevated_state_list_anim.xml</animator>
+  <animator name="mtrl_card_state_list_anim">res/animator/mtrl_card_state_list_anim.xml</animator>
+  <animator name="mtrl_chip_state_list_anim">res/animator/mtrl_chip_state_list_anim.xml</animator>
+  <animator name="mtrl_extended_fab_change_size_collapse_motion_spec">res/animator/mtrl_extended_fab_change_size_collapse_motion_spec.xml</animator>
+  <animator name="mtrl_extended_fab_change_size_expand_motion_spec">res/animator/mtrl_extended_fab_change_size_expand_motion_spec.xml</animator>
+  <animator name="mtrl_extended_fab_hide_motion_spec">res/animator/mtrl_extended_fab_hide_motion_spec.xml</animator>
+  <animator name="mtrl_extended_fab_show_motion_spec">res/animator/mtrl_extended_fab_show_motion_spec.xml</animator>
+  <animator name="mtrl_extended_fab_state_list_animator">res/animator/mtrl_extended_fab_state_list_animator.xml</animator>
+  <animator name="mtrl_fab_hide_motion_spec">res/animator/mtrl_fab_hide_motion_spec.xml</animator>
+  <animator name="mtrl_fab_show_motion_spec">res/animator/mtrl_fab_show_motion_spec.xml</animator>
+  <animator name="mtrl_fab_transformation_sheet_collapse_spec">res/animator/mtrl_fab_transformation_sheet_collapse_spec.xml</animator>
+  <animator name="mtrl_fab_transformation_sheet_expand_spec">res/animator/mtrl_fab_transformation_sheet_expand_spec.xml</animator>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <anim name="abc_fade_in">res/anim/abc_fade_in.xml</anim>
+  <anim name="abc_fade_out">res/anim/abc_fade_out.xml</anim>
+  <anim name="abc_grow_fade_in_from_bottom">res/anim/abc_grow_fade_in_from_bottom.xml</anim>
+  <anim name="abc_popup_enter">res/anim/abc_popup_enter.xml</anim>
+  <anim name="abc_popup_exit">res/anim/abc_popup_exit.xml</anim>
+  <anim name="abc_shrink_fade_out_from_bottom">res/anim/abc_shrink_fade_out_from_bottom.xml</anim>
+  <anim name="abc_slide_in_bottom">res/anim/abc_slide_in_bottom.xml</anim>
+  <anim name="abc_slide_in_top">res/anim/abc_slide_in_top.xml</anim>
+  <anim name="abc_slide_out_bottom">res/anim/abc_slide_out_bottom.xml</anim>
+  <anim name="abc_slide_out_top">res/anim/abc_slide_out_top.xml</anim>
+  <anim name="abc_tooltip_enter">res/anim/abc_tooltip_enter.xml</anim>
+  <anim name="abc_tooltip_exit">res/anim/abc_tooltip_exit.xml</anim>
+  <anim name="btn_checkbox_to_checked_box_inner_merged_animation">res/anim/btn_checkbox_to_checked_box_inner_merged_animation.xml</anim>
+  <anim name="btn_checkbox_to_checked_box_outer_merged_animation">res/anim/btn_checkbox_to_checked_box_outer_merged_animation.xml</anim>
+  <anim name="btn_checkbox_to_checked_icon_null_animation">res/anim/btn_checkbox_to_checked_icon_null_animation.xml</anim>
+  <anim name="btn_checkbox_to_unchecked_box_inner_merged_animation">res/anim/btn_checkbox_to_unchecked_box_inner_merged_animation.xml</anim>
+  <anim name="btn_checkbox_to_unchecked_check_path_merged_animation">res/anim/btn_checkbox_to_unchecked_check_path_merged_animation.xml</anim>
+  <anim name="btn_checkbox_to_unchecked_icon_null_animation">res/anim/btn_checkbox_to_unchecked_icon_null_animation.xml</anim>
+  <anim name="btn_radio_to_off_mtrl_dot_group_animation">res/anim/btn_radio_to_off_mtrl_dot_group_animation.xml</anim>
+  <anim name="btn_radio_to_off_mtrl_ring_outer_animation">res/anim/btn_radio_to_off_mtrl_ring_outer_animation.xml</anim>
+  <anim name="btn_radio_to_off_mtrl_ring_outer_path_animation">res/anim/btn_radio_to_off_mtrl_ring_outer_path_animation.xml</anim>
+  <anim name="btn_radio_to_on_mtrl_dot_group_animation">res/anim/btn_radio_to_on_mtrl_dot_group_animation.xml</anim>
+  <anim name="btn_radio_to_on_mtrl_ring_outer_animation">res/anim/btn_radio_to_on_mtrl_ring_outer_animation.xml</anim>
+  <anim name="btn_radio_to_on_mtrl_ring_outer_path_animation">res/anim/btn_radio_to_on_mtrl_ring_outer_path_animation.xml</anim>
+  <anim name="design_bottom_sheet_slide_in">res/anim/design_bottom_sheet_slide_in.xml</anim>
+  <anim name="design_bottom_sheet_slide_out">res/anim/design_bottom_sheet_slide_out.xml</anim>
+  <anim name="design_snackbar_in">res/anim/design_snackbar_in.xml</anim>
+  <anim name="design_snackbar_out">res/anim/design_snackbar_out.xml</anim>
+  <anim name="fragment_fast_out_extra_slow_in">res/anim-v21/fragment_fast_out_extra_slow_in.xml</anim>
+  <anim name="linear_indeterminate_line1_head_interpolator">res/anim/linear_indeterminate_line1_head_interpolator.xml</anim>
+  <anim name="linear_indeterminate_line1_tail_interpolator">res/anim/linear_indeterminate_line1_tail_interpolator.xml</anim>
+  <anim name="linear_indeterminate_line2_head_interpolator">res/anim/linear_indeterminate_line2_head_interpolator.xml</anim>
+  <anim name="linear_indeterminate_line2_tail_interpolator">res/anim/linear_indeterminate_line2_tail_interpolator.xml</anim>
+  <anim name="m3_bottom_sheet_slide_in">res/anim/m3_bottom_sheet_slide_in.xml</anim>
+  <anim name="m3_bottom_sheet_slide_out">res/anim/m3_bottom_sheet_slide_out.xml</anim>
+  <anim name="m3_motion_fade_enter">res/anim/m3_motion_fade_enter.xml</anim>
+  <anim name="m3_motion_fade_exit">res/anim/m3_motion_fade_exit.xml</anim>
+  <anim name="m3_side_sheet_enter_from_left">res/anim/m3_side_sheet_enter_from_left.xml</anim>
+  <anim name="m3_side_sheet_enter_from_right">res/anim/m3_side_sheet_enter_from_right.xml</anim>
+  <anim name="m3_side_sheet_exit_to_left">res/anim/m3_side_sheet_exit_to_left.xml</anim>
+  <anim name="m3_side_sheet_exit_to_right">res/anim/m3_side_sheet_exit_to_right.xml</anim>
+  <anim name="mtrl_bottom_sheet_slide_in">res/anim/mtrl_bottom_sheet_slide_in.xml</anim>
+  <anim name="mtrl_bottom_sheet_slide_out">res/anim/mtrl_bottom_sheet_slide_out.xml</anim>
+  <anim name="mtrl_card_lowers_interpolator">res/anim/mtrl_card_lowers_interpolator.xml</anim>
+</resources>

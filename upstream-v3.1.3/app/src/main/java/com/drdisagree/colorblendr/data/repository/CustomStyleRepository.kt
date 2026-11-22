@@ -1,0 +1,38 @@
+package com.drdisagree.colorblendr.data.repository
+
+import com.drdisagree.colorblendr.data.dao.CustomStyleDao
+import com.drdisagree.colorblendr.data.models.CustomStyleModel
+
+class CustomStyleRepository(private val daoProvider: () -> CustomStyleDao) {
+
+    private val customStyleDao: CustomStyleDao
+        get() = daoProvider()
+
+    suspend fun getCustomStyles(): List<CustomStyleModel> {
+        return customStyleDao.getAllCustomStyles()
+    }
+
+    suspend fun saveCustomStyle(customStyle: CustomStyleModel) {
+        customStyleDao.insertCustomStyle(customStyle)
+    }
+
+    suspend fun updateCustomStyle(customStyle: CustomStyleModel) {
+        customStyleDao.updateCustomStyle(customStyle)
+    }
+
+    suspend fun deleteCustomStyle(customStyle: CustomStyleModel) {
+        customStyleDao.deleteCustomStyle(customStyle)
+    }
+
+    suspend fun getCustomStyleById(styleId: String): CustomStyleModel? {
+        return customStyleDao.getCustomStyleById(styleId)
+    }
+
+    suspend fun getNextSortOrder(): Int {
+        return customStyleDao.getNextSortOrder()
+    }
+
+    suspend fun updateSortOrders(styleIds: List<String>) {
+        customStyleDao.updateSortOrders(styleIds)
+    }
+}

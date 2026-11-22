@@ -1,0 +1,426 @@
+package com.drdisagree.colorblendr.ui.compose.screens.settings
+
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Brush
+import androidx.compose.material.icons.rounded.FormatColorText
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.InvertColors
+import androidx.compose.material.icons.rounded.PrivacyTip
+import androidx.compose.material.icons.rounded.Build
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
+import com.drdisagree.colorblendr.R
+import com.drdisagree.colorblendr.data.common.Constant.FABRICATED_OVERLAY_NAME_SYSTEM
+import com.drdisagree.colorblendr.data.common.Constant.MONET_ACCURATE_SHADES
+import com.drdisagree.colorblendr.data.common.Constant.MONET_PITCH_BLACK_THEME
+import com.drdisagree.colorblendr.data.common.Constant.SHIZUKU_THEMING_ENABLED
+import com.drdisagree.colorblendr.data.common.Constant.THEMING_ENABLED
+import com.drdisagree.colorblendr.data.common.Constant.TINT_TEXT_COLOR
+import com.drdisagree.colorblendr.data.common.Constant.WIRELESS_ADB_THEMING_ENABLED
+import com.drdisagree.colorblendr.data.common.Utilities.accurateShadesEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.isRootMode
+import com.drdisagree.colorblendr.data.common.Utilities.isShizukuThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.isThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.isWirelessAdbThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.pitchBlackThemeEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.resetCustomStyleIfNotNull
+import com.drdisagree.colorblendr.data.common.Utilities.setAccurateShadesEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.setPitchBlackThemeEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.setShizukuThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.setThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.setTintedTextEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.setWirelessAdbThemingEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.tintedTextEnabled
+import com.drdisagree.colorblendr.data.common.Utilities.updateColorAppliedTimestamp
+import com.drdisagree.colorblendr.data.domain.AppScope
+import com.drdisagree.colorblendr.data.domain.PreviewController
+import com.drdisagree.colorblendr.data.domain.ThemingErrorReporter
+import com.drdisagree.colorblendr.ui.compose.components.AppSnackbarHost
+import com.drdisagree.colorblendr.ui.compose.components.AppToolbar
+import com.drdisagree.colorblendr.ui.compose.components.BackupRestoreCard
+import com.drdisagree.colorblendr.ui.compose.components.ConfirmDialog
+import com.drdisagree.colorblendr.ui.compose.components.MenuItem
+import com.drdisagree.colorblendr.ui.compose.components.SwitchItem
+import com.drdisagree.colorblendr.ui.compose.components.WidgetPosition
+import com.drdisagree.colorblendr.ui.compose.components.contentWidthLimit
+import com.drdisagree.colorblendr.ui.compose.components.navBottomInset
+import com.drdisagree.colorblendr.ui.compose.components.previewContentPadding
+import com.drdisagree.colorblendr.ui.compose.components.showSnackbarReplacing
+import com.drdisagree.colorblendr.ui.compose.theme.ColorBlendrTheme
+import com.drdisagree.colorblendr.ui.compose.utils.AdaptivePreviews
+import com.drdisagree.colorblendr.ui.compose.utils.rememberPrefState
+import com.drdisagree.colorblendr.utils.app.BackupRestore.backupDatabaseAndPrefs
+import com.drdisagree.colorblendr.utils.app.BackupRestore.restoreDatabaseAndPrefs
+import com.drdisagree.colorblendr.utils.manager.OverlayManager.applyFabricatedColors
+import com.drdisagree.colorblendr.utils.manager.OverlayManager.isOverlayEnabled
+import com.drdisagree.colorblendr.utils.manager.OverlayManager.removeFabricatedColors
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.time.Duration.Companion.milliseconds
+import android.R as AndroidR
+
+private const val TAG = "SettingsScreen"
+
+@Composable
+fun SettingsScreen(
+    restoreUri: Uri?,
+    onRestoreUriConsumed: () -> Unit,
+    onNavigateToAbout: () -> Unit,
+    onNavigateToAdvanced: () -> Unit,
+    onNavigateToPrivacyPolicy: () -> Unit
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val scrollState = rememberScrollState()
+    val toolbarLifted by remember { derivedStateOf { scrollState.value > 0 } }
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    val rootMode = remember { isRootMode() }
+    var masterChecked by rememberPrefState(
+        THEMING_ENABLED,
+        SHIZUKU_THEMING_ENABLED,
+        WIRELESS_ADB_THEMING_ENABLED
+    ) {
+        isThemingEnabled() || isShizukuThemingEnabled() || isWirelessAdbThemingEnabled()
+    }
+    LaunchedEffect(Unit) {
+        if (isThemingEnabled() && !isShizukuThemingEnabled() && !isWirelessAdbThemingEnabled()) {
+            val overlayEnabled = withContext(Dispatchers.IO) {
+                isOverlayEnabled(FABRICATED_OVERLAY_NAME_SYSTEM)
+            }
+            if (overlayEnabled == false) masterChecked = false
+        }
+    }
+    var accurateShades by rememberPrefState(MONET_ACCURATE_SHADES) { accurateShadesEnabled() }
+    var pitchBlack by rememberPrefState(MONET_PITCH_BLACK_THEME) { pitchBlackThemeEnabled() }
+    var tintTextColor by rememberPrefState(TINT_TEXT_COLOR) { tintedTextEnabled() }
+
+    val backupSuccessText = stringResource(R.string.backup_success)
+    val backupFailText = stringResource(R.string.backup_fail)
+    val restoreFailText = stringResource(R.string.restore_fail)
+    val dismissText = stringResource(R.string.dismiss)
+    val retryText = stringResource(R.string.retry)
+
+    fun updateColors() {
+        scope.launch {
+            PreviewController.updatePreview()
+        }
+    }
+
+    var pendingBackup by remember { mutableStateOf(false) }
+    var pendingRestore by remember { mutableStateOf(false) }
+
+    fun fileIntent(isBackingUp: Boolean) = Intent().apply {
+        action = if (isBackingUp) Intent.ACTION_CREATE_DOCUMENT else Intent.ACTION_GET_CONTENT
+        type = "*/*"
+        putExtra(
+            Intent.EXTRA_TITLE,
+            "theme_config_" + System.currentTimeMillis() + ".colorblendr"
+        )
+    }
+
+    // Confirm target survives rotation; lambdas can't be saved.
+    var confirmRestoreUri by rememberSaveable { mutableStateOf<String?>(null) }
+
+    fun showRestoreDialog(uri: Uri) {
+        confirmRestoreUri = uri.toString()
+    }
+
+    fun restoreConfirmed(uri: Uri) {
+        PreviewController.abandonPreview()
+        // Restore must not be cancelled mid-write by recreation.
+        AppScope.launch(Dispatchers.IO) {
+            val success = uri.restoreDatabaseAndPrefs()
+            withContext(Dispatchers.Main) {
+                if (success) {
+                    PreviewController.reapply {}
+                } else {
+                    scope.launch {
+                        val result = snackbarHostState.showSnackbarReplacing(
+                            message = restoreFailText,
+                            actionLabel = retryText,
+                            duration = SnackbarDuration.Indefinite
+                        )
+                        if (result == SnackbarResult.ActionPerformed) {
+                            pendingRestore = true
+                        }
+                    }
+                }
+                onRestoreUriConsumed()
+            }
+        }
+    }
+
+    confirmRestoreUri?.let { uriString ->
+        ConfirmDialog(
+            title = stringResource(R.string.confirmation_title),
+            message = stringResource(R.string.confirmation_desc),
+            confirmText = stringResource(AndroidR.string.ok),
+            onConfirm = {
+                confirmRestoreUri = null
+                restoreConfirmed(uriString.toUri())
+            },
+            onDismiss = {
+                confirmRestoreUri = null
+                onRestoreUriConsumed()
+            }
+        )
+    }
+
+    val backupLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val uri = result.data?.data ?: return@rememberLauncherForActivityResult
+            scope.launch(Dispatchers.IO) {
+                val success = uri.backupDatabaseAndPrefs()
+                withContext(Dispatchers.Main) {
+                    scope.launch {
+                        if (success) {
+                            snackbarHostState.showSnackbarReplacing(
+                                message = backupSuccessText,
+                                actionLabel = dismissText
+                            )
+                        } else {
+                            val snackResult = snackbarHostState.showSnackbarReplacing(
+                                message = backupFailText,
+                                actionLabel = retryText,
+                                duration = SnackbarDuration.Indefinite
+                            )
+                            if (snackResult == SnackbarResult.ActionPerformed) {
+                                pendingBackup = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    val restoreLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.data?.let { showRestoreDialog(it) }
+        }
+    }
+
+    LaunchedEffect(pendingBackup) {
+        if (pendingBackup) {
+            pendingBackup = false
+            backupLauncher.launch(fileIntent(true))
+        }
+    }
+    LaunchedEffect(pendingRestore) {
+        if (pendingRestore) {
+            pendingRestore = false
+            restoreLauncher.launch(fileIntent(false))
+        }
+    }
+    LaunchedEffect(restoreUri) {
+        restoreUri?.let { showRestoreDialog(it) }
+    }
+
+    Surface(
+        color = MaterialTheme.colorScheme.surface,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box {
+            Column {
+                AppToolbar(
+                    title = stringResource(R.string.settings),
+                    lifted = toolbarLifted
+                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .contentWidthLimit()
+                        .verticalScroll(scrollState)
+                        .padding(previewContentPadding())
+                        .padding(top = 16.dp)
+                ) {
+                    SwitchItem(
+                        title = stringResource(
+                            R.string.app_service_title,
+                            stringResource(R.string.app_name)
+                        ),
+                        checked = masterChecked,
+                        summaryOn = stringResource(R.string.app_service_desc_on),
+                        summaryOff = stringResource(R.string.app_service_desc_off),
+                        icon = painterResource(R.drawable.ic_service),
+                        isMasterSwitch = true,
+                        onCheckedChange = { isChecked ->
+                            PreviewController.abandonPreview()
+                            masterChecked = isChecked
+                            setThemingEnabled(isChecked)
+                            setShizukuThemingEnabled(isChecked)
+                            setWirelessAdbThemingEnabled(isChecked)
+                            updateColorAppliedTimestamp()
+
+                            AppScope.launch {
+                                val applied = try {
+                                    delay(300.milliseconds)
+                                    withContext(Dispatchers.IO) {
+                                        if (isChecked) {
+                                            updateColorAppliedTimestamp()
+                                            applyFabricatedColors()
+                                        } else {
+                                            removeFabricatedColors()
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    Log.e(TAG, "Failed to toggle theming", e)
+                                    ThemingErrorReporter.report(
+                                        e.message?.takeIf { it.isNotBlank() }
+                                            ?: context.getString(R.string.something_went_wrong)
+                                    )
+                                    false
+                                }
+
+                                if (!applied) {
+                                    setThemingEnabled(false)
+                                    setShizukuThemingEnabled(false)
+                                    setWirelessAdbThemingEnabled(false)
+                                }
+                                masterChecked = applied && isChecked
+                            }
+                        }
+                    )
+
+                    SwitchItem(
+                        title = stringResource(R.string.accurate_shades_title),
+                        summary = stringResource(R.string.accurate_shades_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.Brush),
+                        checked = accurateShades,
+                        enabled = rootMode,
+                        disabledReason = if (!rootMode) stringResource(R.string.root_required) else null,
+                        position = WidgetPosition.Top,
+                        onCheckedChange = { isChecked ->
+                            accurateShades = isChecked
+                            PreviewController.beginPreview()
+                            resetCustomStyleIfNotNull()
+                            setAccurateShadesEnabled(isChecked)
+                            updateColors()
+                        }
+                    )
+                    SwitchItem(
+                        title = stringResource(R.string.pitch_black_theme_title),
+                        summary = stringResource(R.string.pitch_black_theme_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.InvertColors),
+                        checked = pitchBlack,
+                        enabled = rootMode,
+                        disabledReason = if (!rootMode) stringResource(R.string.root_required) else null,
+                        position = WidgetPosition.Middle,
+                        onCheckedChange = { isChecked ->
+                            pitchBlack = isChecked
+                            PreviewController.beginPreview()
+                            resetCustomStyleIfNotNull()
+                            setPitchBlackThemeEnabled(isChecked)
+                            updateColors()
+                        }
+                    )
+                    SwitchItem(
+                        title = stringResource(R.string.tint_text_title),
+                        summary = stringResource(R.string.tint_text_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.FormatColorText),
+                        checked = tintTextColor,
+                        enabled = rootMode,
+                        disabledReason = if (!rootMode) stringResource(R.string.root_required) else null,
+                        position = WidgetPosition.Middle,
+                        onCheckedChange = { isChecked ->
+                            tintTextColor = isChecked
+                            PreviewController.beginPreview()
+                            resetCustomStyleIfNotNull()
+                            setTintedTextEnabled(isChecked)
+                            updateColors()
+                        }
+                    )
+                    MenuItem(
+                        title = stringResource(R.string.advanced_settings),
+                        summary = stringResource(R.string.advanced_settings_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.Build),
+                        showEndArrow = true,
+                        position = WidgetPosition.Bottom,
+                        onClick = onNavigateToAdvanced
+                    )
+
+                    BackupRestoreCard(
+                        onBackup = { backupLauncher.launch(fileIntent(true)) },
+                        onRestore = { restoreLauncher.launch(fileIntent(false)) }
+                    )
+
+                    MenuItem(
+                        title = stringResource(R.string.privacy_policy),
+                        summary = stringResource(R.string.privacy_policy_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.PrivacyTip),
+                        showEndArrow = true,
+                        position = WidgetPosition.Top,
+                        onClick = onNavigateToPrivacyPolicy
+                    )
+                    MenuItem(
+                        title = stringResource(R.string.about_this_app_title),
+                        summary = stringResource(R.string.about_this_app_desc),
+                        icon = rememberVectorPainter(Icons.Rounded.Info),
+                        showEndArrow = true,
+                        position = WidgetPosition.Bottom,
+                        onClick = onNavigateToAbout
+                    )
+                }
+            }
+
+            AppSnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = navBottomInset())
+            )
+        }
+    }
+}
+
+@AdaptivePreviews
+@Composable
+private fun SettingsScreenPreview() {
+    ColorBlendrTheme {
+        SettingsScreen(
+            restoreUri = null,
+            onRestoreUriConsumed = {},
+            onNavigateToAbout = {},
+            onNavigateToAdvanced = {},
+            onNavigateToPrivacyPolicy = {}
+        )
+    }
+}

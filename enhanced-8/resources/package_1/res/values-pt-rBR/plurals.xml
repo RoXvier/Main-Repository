@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <plurals name="community_applies">
+    <item quantity="one"> · %1$s apply</item>
+    <item quantity="other"> · %1$s applies</item>
+  </plurals>
+  <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d nova notificação</item>
+    <item quantity="other">%d novas notificações</item>
+  </plurals>
+  <plurals name="total_words_translated">
+    <item quantity="one">%s Palavra</item>
+    <item quantity="other">%s Palavras</item>
+  </plurals>
+</resources>

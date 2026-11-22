@@ -1,0 +1,173 @@
+package com.drdisagree.colorblendr.utils.fabricated
+
+import android.os.Build
+import android.os.Parcel
+import android.os.Parcelable
+import android.util.TypedValue
+import com.drdisagree.colorblendr.data.common.Constant
+import com.drdisagree.colorblendr.utils.app.ResourceUtil
+
+open class FabricatedOverlayResource : Parcelable {
+    val overlayName: String
+    val targetPackage: String
+    val sourcePackage: String
+    private var entries: MutableMap<String, FabricatedOverlayEntry> = HashMap()
+
+    constructor(
+        overlayName: String,
+        targetPackage: String,
+        sourcePackage: String = Constant.FABRICATED_OVERLAY_SOURCE_PACKAGE
+    ) {
+        this.overlayName = overlayName
+        this.targetPackage = targetPackage
+        this.sourcePackage = sourcePackage
+    }
+
+    fun setInteger(name: String, value: Int) {
+        this.setInteger(name, value, null)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun setInteger(name: String, value: Int, configuration: String?) {
+        val formattedName = formatName(name, "integer")
+        entries[entryKey(formattedName, configuration)] = FabricatedOverlayEntry(
+            formattedName,
+            TypedValue.TYPE_INT_DEC,
+            value,
+            configuration
+        )
+    }
+
+    fun setBoolean(name: String, value: Boolean, ifExists: Boolean = false) {
+        this.setBoolean(name, value, null, ifExists)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun setBoolean(
+        name: String,
+        value: Boolean,
+        configuration: String?,
+        ifExists: Boolean = false
+    ) {
+        val formattedName = if (ifExists) {
+            val foundPackage = ResourceUtil.getResourcePackage(targetPackage, name, "bool")
+            formatName(name, "bool", foundPackage ?: return)
+        } else {
+            formatName(name, "bool")
+        }
+
+        entries[entryKey(formattedName, configuration)] = FabricatedOverlayEntry(
+            formattedName,
+            TypedValue.TYPE_INT_BOOLEAN,
+            if (value) 1 else 0,
+            configuration
+        )
+    }
+
+    fun setDimension(name: String, value: Int) {
+        this.setDimension(name, value, null)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun setDimension(name: String, value: Int, configuration: String?) {
+        val formattedName = formatName(name, "dimen")
+        entries[entryKey(formattedName, configuration)] = FabricatedOverlayEntry(
+            formattedName,
+            TypedValue.TYPE_DIMENSION,
+            value,
+            configuration
+        )
+    }
+
+    fun setAttribute(name: String, value: Int) {
+        this.setAttribute(name, value, null)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun setAttribute(name: String, value: Int, configuration: String?) {
+        val formattedName = formatName(name, "attr")
+        entries[entryKey(formattedName, configuration)] = FabricatedOverlayEntry(
+            formattedName,
+            TypedValue.TYPE_ATTRIBUTE,
+            value,
+            configuration
+        )
+    }
+
+    fun setColor(name: String, value: Int, ifExists: Boolean = false) {
+        this.setColor(name, value, null, ifExists)
+    }
+
+    fun setColor(name: String, value: Int, configuration: String?, ifExists: Boolean = false) {
+        if (configuration != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return
+
+        val formattedName = if (ifExists) {
+            val foundPackage = ResourceUtil.getResourcePackage(targetPackage, name, "color")
+            formatName(name, "color", foundPackage ?: return)
+        } else {
+            formatName(name, "color")
+        }
+
+        entries[entryKey(formattedName, configuration)] = FabricatedOverlayEntry(
+            formattedName,
+            TypedValue.TYPE_INT_COLOR_ARGB8,
+            value,
+            configuration
+        )
+    }
+
+    fun getColor(name: String): Int {
+        return findColor(name)
+            ?: throw RuntimeException("No entry found for ${formatName(name, "color")}")
+    }
+
+    fun findColor(name: String): Int? = entries[formatName(name, "color")]?.resourceValue
+
+    fun getEntries(): Map<String, FabricatedOverlayEntry> {
+        return entries
+    }
+
+    fun setEntries(entries: MutableMap<String, FabricatedOverlayEntry>) {
+        this.entries = entries
+    }
+
+    private fun entryKey(formattedName: String, configuration: String?): String =
+        if (configuration == null) formattedName else "$formattedName|$configuration"
+
+    private fun formatName(name: String, type: String, pkg: String = targetPackage): String {
+        return if (name.contains(":") && name.contains("/")) {
+            name
+        } else {
+            "$pkg:$type/$name"
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    protected constructor(`in`: Parcel) {
+        overlayName = `in`.readString().toString()
+        targetPackage = `in`.readString().toString()
+        sourcePackage = `in`.readString().toString()
+        `in`.readMap(entries, FabricatedOverlayEntry::class.java.classLoader)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(overlayName)
+        dest.writeString(targetPackage)
+        dest.writeString(sourcePackage)
+        dest.writeMap(entries)
+    }
+
+    companion object CREATOR : Parcelable.Creator<FabricatedOverlayResource> {
+        override fun createFromParcel(parcel: Parcel): FabricatedOverlayResource {
+            return FabricatedOverlayResource(parcel)
+        }
+
+        override fun newArray(size: Int): Array<FabricatedOverlayResource?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

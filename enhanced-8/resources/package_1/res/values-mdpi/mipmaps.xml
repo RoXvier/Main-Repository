@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <mipmap name="ic_launcher">res/mipmap-mdpi-v4/ic_launcher.webp</mipmap>
+  <mipmap name="ic_launcher_background">res/mipmap-mdpi-v4/ic_launcher_background.webp</mipmap>
+  <mipmap name="ic_launcher_foreground">res/mipmap-mdpi-v4/ic_launcher_foreground.webp</mipmap>
+  <mipmap name="ic_launcher_round">res/mipmap-mdpi-v4/ic_launcher_round.webp</mipmap>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <string-array name="basic_color_codes">
+    <item>\#AC6166</item>
+    <item>\#A76837</item>
+    <item>\#8B7526</item>
+    <item>\#608045</item>
+    <item>\#34846F</item>
+    <item>\#2B8193</item>
+    <item>\#5179A9</item>
+    <item>\#7A6FAB</item>
+    <item>\#9B6593</item>
+  </string-array>
+  <string-array name="colorspec_version_descs">
+    <item>Original Material You colors, used by every style</item>
+    <item>Material 3 Expressive colors from Android 16 for Neutral, Tonal Spot, Vibrant and Expressive. Other styles stay on 2021.</item>
+    <item>Same as 2025, and unlocks the CMF style</item>
+  </string-array>
+  <string-array name="colorspec_versions">
+    <item>\2021</item>
+    <item>\2025</item>
+    <item>\2026</item>
+  </string-array>
+  <string-array name="contrast_level_descs">
+    <item>Default Material You contrast</item>
+    <item>Stronger separation between colors</item>
+    <item>Maximum separation for easier reading</item>
+  </string-array>
+  <string-array name="contrast_levels">
+    <item>Standard</item>
+    <item>Medium</item>
+    <item>High</item>
+  </string-array>
+  <array name="monet_style">
+    <item>@string/monet_neutral</item>
+    <item>@string/monet_monochrome</item>
+    <item>@string/monet_tonalspot</item>
+    <item>@string/monet_vibrant</item>
+    <item>@string/monet_rainbow</item>
+    <item>@string/monet_expressive</item>
+    <item>@string/monet_fidelity</item>
+    <item>@string/monet_content</item>
+    <item>@string/monet_fruitsalad</item>
+  </array>
+</resources>

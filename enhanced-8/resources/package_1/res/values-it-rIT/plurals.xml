@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <plurals name="community_applies">
+    <item quantity="one"> · %1$s apply</item>
+    <item quantity="other"> · %1$s applies</item>
+  </plurals>
+  <plurals name="total_words_translated">
+    <item quantity="one">%s parola</item>
+    <item quantity="other">%s parole</item>
+  </plurals>
+</resources>
