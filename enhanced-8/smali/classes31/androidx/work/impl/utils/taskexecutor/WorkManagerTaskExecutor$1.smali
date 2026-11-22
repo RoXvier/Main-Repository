@@ -1,0 +1,63 @@
+.class Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor$1;
+.super Ljava/lang/Object;
+.source "WorkManagerTaskExecutor.java"
+
+.implements Ljava/util/concurrent/Executor;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+.field final synthetic this$0:Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;
+
+
+.method constructor <init>(Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;)V
+    .locals 0
+    .param p1, "this$0"
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010
+        }
+        names = {
+            "this$0"
+        }
+    .end annotation
+
+    .line 50
+    iput-object p1, p0, Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor$1;->this$0:Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+.method public execute(Ljava/lang/Runnable;)V
+    .locals 1
+    .param p1, "command"
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "command"
+        }
+    .end annotation
+
+    .line 53
+    iget-object v0, p0, Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor$1;->this$0:Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;
+
+    iget-object v0, v0, Landroidx/work/impl/utils/taskexecutor/WorkManagerTaskExecutor;->mMainThreadHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, p1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 54
+    return-void
+.end method

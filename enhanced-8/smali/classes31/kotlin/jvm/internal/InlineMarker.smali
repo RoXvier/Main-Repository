@@ -1,0 +1,59 @@
+.class public Lkotlin/jvm/internal/InlineMarker;
+.super Ljava/lang/Object;
+.source "InlineMarker.java"
+
+
+.method public constructor <init>()V
+    .locals 0
+
+    .line 8
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static afterInlineCall()V
+    .locals 0
+
+    .line 19
+    return-void
+.end method
+
+.method public static beforeInlineCall()V
+    .locals 0
+
+    .line 16
+    return-void
+.end method
+
+.method public static finallyEnd(I)V
+    .locals 0
+    .param p0, "finallyDepth"
+
+    .line 25
+    return-void
+.end method
+
+.method public static finallyStart(I)V
+    .locals 0
+    .param p0, "finallyDepth"
+
+    .line 22
+    return-void
+.end method
+
+.method public static mark(I)V
+    .locals 0
+    .param p0, "i"
+
+    .line 10
+    return-void
+.end method
+
+.method public static mark(Ljava/lang/String;)V
+    .locals 0
+    .param p0, "name"
+
+    .line 13
+    return-void
+.end method

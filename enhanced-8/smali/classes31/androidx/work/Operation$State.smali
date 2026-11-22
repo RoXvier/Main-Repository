@@ -1,0 +1,32 @@
+.class public abstract Landroidx/work/Operation$State;
+.super Ljava/lang/Object;
+.source "Operation.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/work/Operation;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x409
+    name = "State"
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/work/Operation$State$FAILURE;,
+        Landroidx/work/Operation$State$IN_PROGRESS;,
+        Landroidx/work/Operation$State$SUCCESS;
+    }
+.end annotation
+
+
+.method constructor <init>()V
+    .locals 0
+
+    .line 79
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 82
+    return-void
+.end method

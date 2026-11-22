@@ -1,0 +1,47 @@
+.class Landroidx/transition/Transition$1;
+.super Landroidx/transition/PathMotion;
+.source "Transition.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/transition/Transition;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+.method constructor <init>()V
+    .locals 0
+
+    .line 181
+    invoke-direct {p0}, Landroidx/transition/PathMotion;-><init>()V
+
+    return-void
+.end method
+
+
+.method public getPath(FFFF)Landroid/graphics/Path;
+    .locals 1
+    .param p1, "startX"
+    .param p2, "startY"
+    .param p3, "endX"
+    .param p4, "endY"
+
+    .line 185
+    new-instance v0, Landroid/graphics/Path;
+
+    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
+
+    .line 186
+    .local v0, "path":Landroid/graphics/Path;
+    invoke-virtual {v0, p1, p2}, Landroid/graphics/Path;->moveTo(FF)V
+
+    .line 187
+    invoke-virtual {v0, p3, p4}, Landroid/graphics/Path;->lineTo(FF)V
+
+    .line 188
+    return-object v0
+.end method

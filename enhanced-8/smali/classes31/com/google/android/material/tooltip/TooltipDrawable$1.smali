@@ -1,0 +1,61 @@
+.class Lcom/google/android/material/tooltip/TooltipDrawable$1;
+.super Ljava/lang/Object;
+.source "TooltipDrawable.java"
+
+.implements Landroid/view/View$OnLayoutChangeListener;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/material/tooltip/TooltipDrawable;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+.field final synthetic this$0:Lcom/google/android/material/tooltip/TooltipDrawable;
+
+
+.method constructor <init>(Lcom/google/android/material/tooltip/TooltipDrawable;)V
+    .locals 0
+    .param p1, "this$0"
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010
+        }
+        names = {
+            null
+        }
+    .end annotation
+
+    .line 82
+    iput-object p1, p0, Lcom/google/android/material/tooltip/TooltipDrawable$1;->this$0:Lcom/google/android/material/tooltip/TooltipDrawable;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+.method public onLayoutChange(Landroid/view/View;IIIIIIII)V
+    .locals 1
+    .param p1, "v"
+    .param p2, "left"
+    .param p3, "top"
+    .param p4, "right"
+    .param p5, "bottom"
+    .param p6, "oldLeft"
+    .param p7, "oldTop"
+    .param p8, "oldRight"
+    .param p9, "oldBottom"
+
+    .line 94
+    iget-object v0, p0, Lcom/google/android/material/tooltip/TooltipDrawable$1;->this$0:Lcom/google/android/material/tooltip/TooltipDrawable;
+
+    invoke-static {v0, p1}, Lcom/google/android/material/tooltip/TooltipDrawable;->access$000(Lcom/google/android/material/tooltip/TooltipDrawable;Landroid/view/View;)V
+
+    .line 95
+    return-void
+.end method

@@ -1,0 +1,55 @@
+.class Lcom/google/android/material/circularreveal/CircularRevealCompat$1;
+.super Landroid/animation/AnimatorListenerAdapter;
+.source "CircularRevealCompat.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/google/android/material/circularreveal/CircularRevealCompat;->createCircularRevealListener(Lcom/google/android/material/circularreveal/CircularRevealWidget;)Landroid/animation/Animator$AnimatorListener;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+.field final synthetic val$view:Lcom/google/android/material/circularreveal/CircularRevealWidget;
+
+
+.method constructor <init>(Lcom/google/android/material/circularreveal/CircularRevealWidget;)V
+    .locals 0
+
+    .line 115
+    iput-object p1, p0, Lcom/google/android/material/circularreveal/CircularRevealCompat$1;->val$view:Lcom/google/android/material/circularreveal/CircularRevealWidget;
+
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
+
+    return-void
+.end method
+
+
+.method public onAnimationEnd(Landroid/animation/Animator;)V
+    .locals 1
+    .param p1, "animation"
+
+    .line 123
+    iget-object v0, p0, Lcom/google/android/material/circularreveal/CircularRevealCompat$1;->val$view:Lcom/google/android/material/circularreveal/CircularRevealWidget;
+
+    invoke-interface {v0}, Lcom/google/android/material/circularreveal/CircularRevealWidget;->destroyCircularRevealCache()V
+
+    .line 124
+    return-void
+.end method
+
+.method public onAnimationStart(Landroid/animation/Animator;)V
+    .locals 1
+    .param p1, "animation"
+
+    .line 118
+    iget-object v0, p0, Lcom/google/android/material/circularreveal/CircularRevealCompat$1;->val$view:Lcom/google/android/material/circularreveal/CircularRevealWidget;
+
+    invoke-interface {v0}, Lcom/google/android/material/circularreveal/CircularRevealWidget;->buildCircularRevealCache()V
+
+    .line 119
+    return-void
+.end method

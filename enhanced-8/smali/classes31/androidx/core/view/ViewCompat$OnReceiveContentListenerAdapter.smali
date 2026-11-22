@@ -1,0 +1,77 @@
+.class final Landroidx/core/view/ViewCompat$OnReceiveContentListenerAdapter;
+.super Ljava/lang/Object;
+.source "ViewCompat.java"
+
+.implements Landroid/view/OnReceiveContentListener;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/view/ViewCompat;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1a
+    name = "OnReceiveContentListenerAdapter"
+.end annotation
+
+
+.field private final mJetpackListener:Landroidx/core/view/OnReceiveContentListener;
+
+
+.method constructor <init>(Landroidx/core/view/OnReceiveContentListener;)V
+    .locals 0
+    .param p1, "jetpackListener"
+
+    .line 3271
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3272
+    iput-object p1, p0, Landroidx/core/view/ViewCompat$OnReceiveContentListenerAdapter;->mJetpackListener:Landroidx/core/view/OnReceiveContentListener;
+
+    .line 3273
+    return-void
+.end method
+
+
+.method public onReceiveContent(Landroid/view/View;Landroid/view/ContentInfo;)Landroid/view/ContentInfo;
+    .locals 3
+    .param p1, "view"
+    .param p2, "platPayload"
+
+    .line 3278
+    invoke-static {p2}, Landroidx/core/view/ContentInfoCompat;->toContentInfoCompat(Landroid/view/ContentInfo;)Landroidx/core/view/ContentInfoCompat;
+
+    move-result-object v0
+
+    .line 3279
+    .local v0, "payload":Landroidx/core/view/ContentInfoCompat;
+    iget-object v1, p0, Landroidx/core/view/ViewCompat$OnReceiveContentListenerAdapter;->mJetpackListener:Landroidx/core/view/OnReceiveContentListener;
+
+    invoke-interface {v1, p1, v0}, Landroidx/core/view/OnReceiveContentListener;->onReceiveContent(Landroid/view/View;Landroidx/core/view/ContentInfoCompat;)Landroidx/core/view/ContentInfoCompat;
+
+    move-result-object v1
+
+    .line 3280
+    .local v1, "result":Landroidx/core/view/ContentInfoCompat;
+    if-nez v1, :cond_0
+
+    .line 3281
+    const/4 v2, 0x0
+
+    return-object v2
+
+    .line 3283
+    :cond_0
+    if-ne v1, v0, :cond_1
+
+    .line 3285
+    return-object p2
+
+    .line 3287
+    :cond_1
+    invoke-virtual {v1}, Landroidx/core/view/ContentInfoCompat;->toContentInfo()Landroid/view/ContentInfo;
+
+    move-result-object v2
+
+    return-object v2
+.end method

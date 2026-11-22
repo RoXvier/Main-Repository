@@ -1,0 +1,9 @@
+.class public interface abstract Landroidx/core/view/NestedScrollingParent3;
+.super Ljava/lang/Object;
+.source "NestedScrollingParent3.java"
+
+.implements Landroidx/core/view/NestedScrollingParent2;
+
+
+.method public abstract onNestedScroll(Landroid/view/View;IIIII[I)V
+.end method

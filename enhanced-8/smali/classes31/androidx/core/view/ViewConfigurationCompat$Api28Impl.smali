@@ -1,0 +1,48 @@
+.class Landroidx/core/view/ViewConfigurationCompat$Api28Impl;
+.super Ljava/lang/Object;
+.source "ViewConfigurationCompat.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/view/ViewConfigurationCompat;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = "Api28Impl"
+.end annotation
+
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 309
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 311
+    return-void
+.end method
+
+.method static getScaledHoverSlop(Landroid/view/ViewConfiguration;)I
+    .locals 1
+    .param p0, "viewConfiguration"
+
+    .line 314
+    invoke-virtual {p0}, Landroid/view/ViewConfiguration;->getScaledHoverSlop()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static shouldShowMenuShortcutsWhenKeyboardPresent(Landroid/view/ViewConfiguration;)Z
+    .locals 1
+    .param p0, "viewConfiguration"
+
+    .line 319
+    invoke-virtual {p0}, Landroid/view/ViewConfiguration;->shouldShowMenuShortcutsWhenKeyboardPresent()Z
+
+    move-result v0
+
+    return v0
+.end method

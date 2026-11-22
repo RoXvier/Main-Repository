@@ -1,0 +1,59 @@
+.class public final synthetic Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+.implements Lkotlin/jvm/functions/Function0;
+
+
+.annotation runtime Lcom/android/tools/r8/annotations/LambdaMethod;
+    holder = "Landroidx/room/BaseRoomConnectionManager$DriverWrapper;"
+    method = "openLocked$lambda$1"
+    proto = "(Landroidx/room/BaseRoomConnectionManager;Landroidx/room/BaseRoomConnectionManager$DriverWrapper;Ljava/lang/String;)Landroidx/sqlite/SQLiteConnection;"
+.end annotation
+
+.annotation build Lcom/android/tools/r8/annotations/SynthesizedClassV2;
+    apiLevel = -0x2
+    kind = 0x1c
+    versionHash = "9c309e1fe0130a519f42d3ae97bdf2a57c6c84ce491b9cd262c375723ff28541"
+.end annotation
+
+
+.field public final synthetic f$0:Landroidx/room/BaseRoomConnectionManager;
+
+.field public final synthetic f$1:Landroidx/room/BaseRoomConnectionManager$DriverWrapper;
+
+.field public final synthetic f$2:Ljava/lang/String;
+
+
+.method public synthetic constructor <init>(Landroidx/room/BaseRoomConnectionManager;Landroidx/room/BaseRoomConnectionManager$DriverWrapper;Ljava/lang/String;)V
+    .locals 0
+
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$0:Landroidx/room/BaseRoomConnectionManager;
+
+    iput-object p2, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$1:Landroidx/room/BaseRoomConnectionManager$DriverWrapper;
+
+    iput-object p3, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$2:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+.method public final invoke()Ljava/lang/Object;
+    .locals 3
+
+    .line 0
+    iget-object v0, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$0:Landroidx/room/BaseRoomConnectionManager;
+
+    iget-object v1, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$1:Landroidx/room/BaseRoomConnectionManager$DriverWrapper;
+
+    iget-object v2, p0, Landroidx/room/BaseRoomConnectionManager$DriverWrapper$$ExternalSyntheticLambda0;->f$2:Ljava/lang/String;
+
+    invoke-static {v0, v1, v2}, Landroidx/room/BaseRoomConnectionManager$DriverWrapper;->openLocked$lambda$1(Landroidx/room/BaseRoomConnectionManager;Landroidx/room/BaseRoomConnectionManager$DriverWrapper;Ljava/lang/String;)Landroidx/sqlite/SQLiteConnection;
+
+    move-result-object v0
+
+    return-object v0
+.end method
