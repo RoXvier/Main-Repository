@@ -22,7 +22,7 @@ Signing certificate SHA-256
 
 移植版的 Java 源码、测试和脚本在 `stock-wallpaper/`，同一份源码也放在 `readable-java/com/drdisagree/colorblendr/utils/wallpaper/StockWallpaperColors.java`。`readable-java/` 里其余文件仍是反编译阅读稿，请以对应 Smali 为准。`upstream-v3.1.3/` 是官方 v3.1.3 标签的原始 Kotlin 工程，用于对照。
 
-.8 用 `signing/colorblendr-enhanced.jks` 签名（别名 `colorblendr-enhanced`，密码 `colorblendr`）。这个仓库是公开的，所以密钥以加密文件 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令只保存在 RoXvier 的定时任务里，解密命令见 `BUILD.txt`，与 .7 是同一把密钥，可以直接覆盖安装 .7。.6 及更早版本的签名密钥不在这个包里，所以 .8 不能覆盖安装它们：先在应用内备份，卸载旧版后再安装。
+.8 用 `signing/colorblendr-enhanced.jks` 签名（别名 `colorblendr-enhanced`，密码 `colorblendr`）。这个仓库是公开的，所以密钥以加密文件 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令由 RoXvier 保管，解密命令见 `BUILD.txt`，与 .7 是同一把密钥，可以直接覆盖安装 .7。.6 及更早版本的签名密钥不在这个包里，所以 .8 不能覆盖安装它们：先在应用内备份，卸载旧版后再安装。
 
 ## 廣東話（香港）
 
@@ -36,7 +36,7 @@ Signing certificate SHA-256
 
 移植版嘅 Java 原始碼、測試同指令稿喺 `stock-wallpaper/`，同一份原始碼亦都放咗喺 `readable-java/com/drdisagree/colorblendr/utils/wallpaper/StockWallpaperColors.java`。`readable-java/` 入面其餘檔案仍然係反編譯閱讀稿，要以對應嘅 Smali 為準。`upstream-v3.1.3/` 係官方 v3.1.3 標籤嘅原始 Kotlin 工程，方便對照。
 
-.8 用 `signing/colorblendr-enhanced.jks` 簽名（別名 `colorblendr-enhanced`，密碼 `colorblendr`）。呢個倉庫係公開嘅，所以密鑰以加密檔案 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令只保存喺 RoXvier 嘅定時任務入面，解密指令喺 `BUILD.txt`，同 .7 係同一條密鑰，可以直接覆蓋安裝 .7。.6 同更早版本嘅簽名密鑰唔喺呢個包入面，所以 .8 唔可以覆蓋安裝佢哋：先喺應用程式入面備份，解除安裝舊版之後再安裝。
+.8 用 `signing/colorblendr-enhanced.jks` 簽名（別名 `colorblendr-enhanced`，密碼 `colorblendr`）。呢個倉庫係公開嘅，所以密鑰以加密檔案 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令由 RoXvier 保管，解密指令喺 `BUILD.txt`，同 .7 係同一條密鑰，可以直接覆蓋安裝 .7。.6 同更早版本嘅簽名密鑰唔喺呢個包入面，所以 .8 唔可以覆蓋安裝佢哋：先喺應用程式入面備份，解除安裝舊版之後再安裝。
 
 ## 繁體中文（台灣）
 
@@ -50,7 +50,7 @@ Signing certificate SHA-256
 
 移植版的 Java 原始碼、測試和指令碼在 `stock-wallpaper/`，同一份原始碼也放在 `readable-java/com/drdisagree/colorblendr/utils/wallpaper/StockWallpaperColors.java`。`readable-java/` 裡其餘檔案仍是反編譯閱讀稿，請以對應的 Smali 為準。`upstream-v3.1.3/` 是官方 v3.1.3 標籤的原始 Kotlin 專案，供對照使用。
 
-.8 用 `signing/colorblendr-enhanced.jks` 簽署（別名 `colorblendr-enhanced`，密碼 `colorblendr`）。這個儲存庫是公開的，所以金鑰以加密檔案 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令只保存在 RoXvier 的排程任務裡，解密指令請見 `BUILD.txt`，與 .7 是同一把金鑰，可以直接覆蓋安裝 .7。.6 及更早版本的簽署金鑰不在這個套件裡，所以 .8 不能覆蓋安裝它們：先在應用程式內備份，解除安裝舊版後再安裝。
+.8 用 `signing/colorblendr-enhanced.jks` 簽署（別名 `colorblendr-enhanced`，密碼 `colorblendr`）。這個儲存庫是公開的，所以金鑰以加密檔案 `signing/colorblendr-enhanced.jks.enc` 存放，解密口令由 RoXvier 保管，解密指令請見 `BUILD.txt`，與 .7 是同一把金鑰，可以直接覆蓋安裝 .7。.6 及更早版本的簽署金鑰不在這個套件裡，所以 .8 不能覆蓋安裝它們：先在應用程式內備份，解除安裝舊版後再安裝。
 
 ## English
 
@@ -64,7 +64,7 @@ How it was checked: `stock-wallpaper/difftest.sh` compiles the official `Wallpap
 
 The port's Java source, tests and scripts are in `stock-wallpaper/`; the same source is also at `readable-java/com/drdisagree/colorblendr/utils/wallpaper/StockWallpaperColors.java`. The other files in `readable-java/` are still decompiler output; consult the corresponding Smali. `upstream-v3.1.3/` contains the original Kotlin project from the official v3.1.3 tag for comparison.
 
-.8 is signed with `signing/colorblendr-enhanced.jks` (alias `colorblendr-enhanced`, password `colorblendr`). This repository is public, so the key is stored encrypted as `signing/colorblendr-enhanced.jks.enc`; the passphrase is kept only in RoXvier's scheduled task, and `BUILD.txt` shows how to decrypt it, the same key as .7, so it installs over .7. Builds up to .6 were signed with a key that is not in this archive, so .8 does not install over them: back up inside the app, uninstall the old build, then install.
+.8 is signed with `signing/colorblendr-enhanced.jks` (alias `colorblendr-enhanced`, password `colorblendr`). This repository is public, so the key is stored encrypted as `signing/colorblendr-enhanced.jks.enc`; the passphrase is kept by RoXvier, and `BUILD.txt` shows how to decrypt it, the same key as .7, so it installs over .7. Builds up to .6 were signed with a key that is not in this archive, so .8 does not install over them: back up inside the app, uninstall the old build, then install.
 
 ## Changed in .8 (relative to .6)
 
