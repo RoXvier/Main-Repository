@@ -1,0 +1,506 @@
+.class public interface abstract Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;
+.super Ljava/lang/Object;
+
+
+.field public static final attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final commonName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final countryName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final crlAccessMethod:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_PasswordBasedMac:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_SHA1:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ad:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ad_caIssuers:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ad_ocsp:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_alg_noSignature:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_alg_unsigned:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_at_name:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_at_organizationIdentifier:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_at_telephoneNumber:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ce:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ce_ct_embeddedSCTList:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ce_ct_precertPoison:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ce_ct_transparencyInformation:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ct_precertificate:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ea_rsa:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ecdsa_with_shake128:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ecdsa_with_shake256:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_kp_ct_precertSigning:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_ocsp_ct_sctList:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_pda:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_pe:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_pe_relatedCert:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_rsassa_pss_shake128:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final id_rsassa_pss_shake256:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final localityName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final ocspAccessMethod:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final organization:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final organizationalUnitName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final ripemd160:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final ripemd160WithRSAEncryption:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+.field public static final stateOrProvinceName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+
+.method static constructor <clinit>()V
+    .locals 5
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "2.5.4"
+
+    invoke-direct {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "3"
+
+    invoke-virtual {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->commonName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "6"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->countryName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "7"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->localityName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "8"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->stateOrProvinceName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "10"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->organization:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "11"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->organizationalUnitName:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "20"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_at_telephoneNumber:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "41"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_at_name:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->attributeType:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "97"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_at_organizationIdentifier:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1.3.14.3.2.26"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_SHA1:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1.3.36.3.2.1"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->ripemd160:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1.3.36.3.3.1.2"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->ripemd160WithRSAEncryption:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "2.5.8.1.1"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ea_rsa:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1.3.6.1.5.5.7"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1"
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pe:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pe:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v4, "36"
+
+    invoke-virtual {v0, v4}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pe_relatedCert:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "30"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_rsassa_pss_shake128:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "31"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_rsassa_pss_shake256:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "32"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ecdsa_with_shake128:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "33"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ecdsa_with_shake256:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v2, "2"
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_alg_noSignature:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->pkix_algorithms:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v4}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_alg_unsigned:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v4, "9"
+
+    invoke-virtual {v0, v4}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pda:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_pkix:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v4, "48"
+
+    invoke-virtual {v0, v4}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad_caIssuers:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad_ocsp:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad_ocsp:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->ocspAccessMethod:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ad_caIssuers:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->crlAccessMethod:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "2.5.29"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ce:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v3, "1.3.6.1.4.1.11129.2.4"
+
+    invoke-direct {v0, v3}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v2}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ce_ct_embeddedSCTList:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    invoke-virtual {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ce_ct_precertPoison:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "4"
+
+    invoke-virtual {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_kp_ct_precertSigning:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "5"
+
+    invoke-virtual {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ocsp_ct_sctList:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "1.3.101.75"
+
+    invoke-direct {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ce_ct_transparencyInformation:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    new-instance v0, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "1.3.101.78"
+
+    invoke-direct {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->intern()Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_ct_precertificate:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    sget-object v0, Lorg/bouncycastle/internal/asn1/misc/MiscObjectIdentifiers;->entrust:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    const-string v1, "66.13"
+
+    invoke-virtual {v0, v1}, Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;->branch(Ljava/lang/String;)Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/bouncycastle/asn1/x509/X509ObjectIdentifiers;->id_PasswordBasedMac:Lorg/bouncycastle/asn1/ASN1ObjectIdentifier;
+
+    return-void
+.end method

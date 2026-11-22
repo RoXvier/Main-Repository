@@ -1,0 +1,35 @@
+.class public Lorg/bouncycastle/jcajce/provider/symmetric/LEA$CFB;
+.super Lorg/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/bouncycastle/jcajce/provider/symmetric/LEA;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "CFB"
+.end annotation
+
+
+.method public constructor <init>()V
+    .locals 3
+
+    new-instance v0, Lorg/bouncycastle/crypto/DefaultBufferedBlockCipher;
+
+    new-instance v1, Lorg/bouncycastle/crypto/engines/LEAEngine;
+
+    invoke-direct {v1}, Lorg/bouncycastle/crypto/engines/LEAEngine;-><init>()V
+
+    const/16 v2, 0x80
+
+    invoke-static {v1, v2}, Lorg/bouncycastle/crypto/modes/CFBBlockCipher;->newInstance(Lorg/bouncycastle/crypto/BlockCipher;I)Lorg/bouncycastle/crypto/modes/CFBModeCipher;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Lorg/bouncycastle/crypto/DefaultBufferedBlockCipher;-><init>(Lorg/bouncycastle/crypto/BlockCipher;)V
+
+    invoke-direct {p0, v0, v2}, Lorg/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher;-><init>(Lorg/bouncycastle/crypto/BufferedBlockCipher;I)V
+
+    return-void
+.end method

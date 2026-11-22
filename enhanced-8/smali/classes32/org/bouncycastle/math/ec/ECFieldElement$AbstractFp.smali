@@ -1,0 +1,21 @@
+.class public abstract Lorg/bouncycastle/math/ec/ECFieldElement$AbstractFp;
+.super Lorg/bouncycastle/math/ec/ECFieldElement;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/bouncycastle/math/ec/ECFieldElement;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x409
+    name = "AbstractFp"
+.end annotation
+
+
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Lorg/bouncycastle/math/ec/ECFieldElement;-><init>()V
+
+    return-void
+.end method

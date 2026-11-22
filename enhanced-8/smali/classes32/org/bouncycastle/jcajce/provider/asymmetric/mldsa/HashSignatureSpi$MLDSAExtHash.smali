@@ -1,0 +1,179 @@
+.class public Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;
+.super Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "MLDSAExtHash"
+.end annotation
+
+
+.field private final bOut:Ljava/io/ByteArrayOutputStream;
+
+
+.method public constructor <init>()V
+    .locals 2
+
+    new-instance v0, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;
+
+    invoke-direct {v0}, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;-><init>()V
+
+    invoke-direct {p0, v0}, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi;-><init>(Lorg/bouncycastle/crypto/signers/HashMLDSASigner;)V
+
+    new-instance v0, Ljava/io/ByteArrayOutputStream;
+
+    const/16 v1, 0x40
+
+    invoke-direct {v0, v1}, Ljava/io/ByteArrayOutputStream;-><init>(I)V
+
+    iput-object v0, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    return-void
+.end method
+
+.method protected constructor <init>(Lorg/bouncycastle/crypto/params/MLDSAParameters;)V
+    .locals 1
+
+    new-instance v0, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;
+
+    invoke-direct {v0}, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;-><init>()V
+
+    invoke-direct {p0, v0, p1}, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi;-><init>(Lorg/bouncycastle/crypto/signers/HashMLDSASigner;Lorg/bouncycastle/crypto/params/MLDSAParameters;)V
+
+    new-instance p1, Ljava/io/ByteArrayOutputStream;
+
+    const/16 v0, 0x40
+
+    invoke-direct {p1, v0}, Ljava/io/ByteArrayOutputStream;-><init>(I)V
+
+    iput-object p1, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    return-void
+.end method
+
+
+.method protected engineSign()[B
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/security/SignatureException;
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+
+    move-result-object v0
+
+    iget-object v1, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->reset()V
+
+    :try_start_0
+    iget-object v1, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->signer:Lorg/bouncycastle/crypto/signers/HashMLDSASigner;
+
+    invoke-virtual {v1, v0}, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;->generateSignature([B)[B
+
+    move-result-object v0
+
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-object v0
+
+    :catch_0
+    move-exception v0
+
+    new-instance v1, Ljava/security/SignatureException;
+
+    invoke-virtual {v0}, Ljava/lang/Exception;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {v1, v0}, Ljava/security/SignatureException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    :catch_1
+    move-exception v0
+
+    new-instance v1, Ljava/security/SignatureException;
+
+    invoke-virtual {v0}, Ljava/lang/IllegalArgumentException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {v1, v0}, Ljava/security/SignatureException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+.end method
+
+.method protected engineVerify([B)Z
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/security/SignatureException;
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+
+    move-result-object v0
+
+    iget-object v1, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->reset()V
+
+    :try_start_0
+    iget-object v1, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->signer:Lorg/bouncycastle/crypto/signers/HashMLDSASigner;
+
+    invoke-virtual {v1, v0, p1}, Lorg/bouncycastle/crypto/signers/HashMLDSASigner;->verifySignature([B[B)Z
+
+    move-result p1
+
+    :try_end_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
+
+    return p1
+
+    :catch_0
+    move-exception p1
+
+    new-instance v0, Ljava/security/SignatureException;
+
+    invoke-virtual {p1}, Ljava/lang/IllegalArgumentException;->getMessage()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {v0, p1}, Ljava/security/SignatureException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method protected updateEngine(B)V
+    .locals 1
+
+    iget-object v0, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v0, p1}, Ljava/io/ByteArrayOutputStream;->write(I)V
+
+    return-void
+.end method
+
+.method protected updateEngine([BII)V
+    .locals 1
+
+    iget-object v0, p0, Lorg/bouncycastle/jcajce/provider/asymmetric/mldsa/HashSignatureSpi$MLDSAExtHash;->bOut:Ljava/io/ByteArrayOutputStream;
+
+    invoke-virtual {v0, p1, p2, p3}, Ljava/io/ByteArrayOutputStream;->write([BII)V
+
+    return-void
+.end method

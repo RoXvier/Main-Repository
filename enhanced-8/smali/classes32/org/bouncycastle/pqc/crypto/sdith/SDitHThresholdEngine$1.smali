@@ -1,0 +1,12 @@
+.class synthetic Lorg/bouncycastle/pqc/crypto/sdith/SDitHThresholdEngine$1;
+.super Ljava/lang/Object;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/bouncycastle/pqc/crypto/sdith/SDitHThresholdEngine;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1008
+    name = null
+.end annotation
