@@ -1,0 +1,364 @@
+.class final Landroidx/compose/material3/AppBarOverflowStateImpl;
+.super Ljava/lang/Object;
+.source "AppBarDsl.kt"
+
+.implements Landroidx/compose/material3/AppBarOverflowState;
+
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/compose/material3/AppBarOverflowStateImpl$Companion;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nAppBarDsl.kt\nKotlin\n*S Kotlin\n*F\n+ 1 AppBarDsl.kt\nandroidx/compose/material3/AppBarOverflowStateImpl\n+ 2 SnapshotIntState.kt\nandroidx/compose/runtime/SnapshotIntStateKt__SnapshotIntStateKt\n*L\n1#1,469:1\n78#2:470\n111#2,2:471\n78#2:473\n111#2,2:474\n*S KotlinDebug\n*F\n+ 1 AppBarDsl.kt\nandroidx/compose/material3/AppBarOverflowStateImpl\n*L\n281#1:470\n281#1:471,2\n282#1:473\n282#1:474,2\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0010\u0008\n\u0002\u0008\r\u0008\u0002\u0018\u0000 \u00112\u00020\u0001:\u0001\u0011B\u0007\u00a2\u0006\u0004\u0008\u0002\u0010\u0003R+\u0010\u0006\u001a\u00020\u00052\u0006\u0010\u0004\u001a\u00020\u00058V@VX\u0096\u008e\u0002\u00a2\u0006\u0012\n\u0004\u0008\u000b\u0010\u000c\u001a\u0004\u0008\u0007\u0010\u0008\"\u0004\u0008\t\u0010\nR+\u0010\r\u001a\u00020\u00052\u0006\u0010\u0004\u001a\u00020\u00058V@VX\u0096\u008e\u0002\u00a2\u0006\u0012\n\u0004\u0008\u0010\u0010\u000c\u001a\u0004\u0008\u000e\u0010\u0008\"\u0004\u0008\u000f\u0010\n\u00a8\u0006\u0012"
+    }
+    d2 = {
+        "Landroidx/compose/material3/AppBarOverflowStateImpl;",
+        "Landroidx/compose/material3/AppBarOverflowState;",
+        "<init>",
+        "()V",
+        "<set-?>",
+        "",
+        "totalItemCount",
+        "getTotalItemCount",
+        "()I",
+        "setTotalItemCount",
+        "(I)V",
+        "totalItemCount$delegate",
+        "Landroidx/compose/runtime/MutableIntState;",
+        "visibleItemCount",
+        "getVisibleItemCount",
+        "setVisibleItemCount",
+        "visibleItemCount$delegate",
+        "Companion",
+        "material3"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x1,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+.field public static final Companion:Landroidx/compose/material3/AppBarOverflowStateImpl$Companion;
+
+.field private static final Saver:Landroidx/compose/runtime/saveable/Saver;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroidx/compose/runtime/saveable/Saver<",
+            "Landroidx/compose/material3/AppBarOverflowStateImpl;",
+            "*>;"
+        }
+    .end annotation
+.end field
+
+
+.field private final totalItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+.field private final visibleItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+
+.method static constructor <clinit>()V
+    .locals 2
+
+    new-instance v0, Landroidx/compose/material3/AppBarOverflowStateImpl$Companion;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Landroidx/compose/material3/AppBarOverflowStateImpl$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    sput-object v0, Landroidx/compose/material3/AppBarOverflowStateImpl;->Companion:Landroidx/compose/material3/AppBarOverflowStateImpl$Companion;
+
+    .line 286
+    new-instance v0, Landroidx/compose/material3/AppBarOverflowStateImpl$$ExternalSyntheticLambda0;
+
+    invoke-direct {v0}, Landroidx/compose/material3/AppBarOverflowStateImpl$$ExternalSyntheticLambda0;-><init>()V
+
+    new-instance v1, Landroidx/compose/material3/AppBarOverflowStateImpl$$ExternalSyntheticLambda1;
+
+    invoke-direct {v1}, Landroidx/compose/material3/AppBarOverflowStateImpl$$ExternalSyntheticLambda1;-><init>()V
+
+    invoke-static {v0, v1}, Landroidx/compose/runtime/saveable/SaverKt;->Saver(Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Landroidx/compose/runtime/saveable/Saver;
+
+    move-result-object v0
+
+    sput-object v0, Landroidx/compose/material3/AppBarOverflowStateImpl;->Saver:Landroidx/compose/runtime/saveable/Saver;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 2
+
+    .line 280
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 281
+    const/4 v0, 0x0
+
+    invoke-static {v0}, Landroidx/compose/runtime/SnapshotIntStateKt;->mutableIntStateOf(I)Landroidx/compose/runtime/MutableIntState;
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->totalItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    .line 282
+    invoke-static {v0}, Landroidx/compose/runtime/SnapshotIntStateKt;->mutableIntStateOf(I)Landroidx/compose/runtime/MutableIntState;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->visibleItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    .line 280
+    return-void
+.end method
+
+.method static final Saver$lambda$0(Landroidx/compose/runtime/saveable/SaverScope;Landroidx/compose/material3/AppBarOverflowStateImpl;)Ljava/util/List;
+    .locals 3
+    .param p0, "$this$Saver"
+    .param p1, "it"
+
+    .line 287
+    const/4 v0, 0x2
+
+    new-array v0, v0, [Ljava/lang/Integer;
+
+    invoke-virtual {p1}, Landroidx/compose/material3/AppBarOverflowStateImpl;->getTotalItemCount()I
+
+    move-result v1
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    const/4 v2, 0x0
+
+    aput-object v1, v0, v2
+
+    invoke-virtual {p1}, Landroidx/compose/material3/AppBarOverflowStateImpl;->getVisibleItemCount()I
+
+    move-result v1
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    const/4 v2, 0x1
+
+    aput-object v1, v0, v2
+
+    invoke-static {v0}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static final Saver$lambda$1(Ljava/util/List;)Landroidx/compose/material3/AppBarOverflowStateImpl;
+    .locals 4
+    .param p0, "it"
+
+    .line 289
+    new-instance v0, Landroidx/compose/material3/AppBarOverflowStateImpl;
+
+    invoke-direct {v0}, Landroidx/compose/material3/AppBarOverflowStateImpl;-><init>()V
+
+    move-object v1, v0
+
+    .local v1, "$this$Saver_u24lambda_u241_u240":Landroidx/compose/material3/AppBarOverflowStateImpl;
+    const/4 v2, 0x0
+
+    .line 290
+    .local v2, "$i$a$-apply-AppBarOverflowStateImpl$Companion$Saver$2$1":I
+    const/4 v3, 0x0
+
+    invoke-interface {p0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Number;
+
+    invoke-virtual {v3}, Ljava/lang/Number;->intValue()I
+
+    move-result v3
+
+    invoke-virtual {v1, v3}, Landroidx/compose/material3/AppBarOverflowStateImpl;->setTotalItemCount(I)V
+
+    .line 291
+    const/4 v3, 0x1
+
+    invoke-interface {p0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Number;
+
+    invoke-virtual {v3}, Ljava/lang/Number;->intValue()I
+
+    move-result v3
+
+    invoke-virtual {v1, v3}, Landroidx/compose/material3/AppBarOverflowStateImpl;->setVisibleItemCount(I)V
+
+    .line 292
+    nop
+
+    .line 289
+    .end local v1
+    .end local v2
+    nop
+
+    .line 292
+    return-object v0
+.end method
+
+.method public static final synthetic access$getSaver$cp()Landroidx/compose/runtime/saveable/Saver;
+    .locals 1
+
+    .line 280
+    sget-object v0, Landroidx/compose/material3/AppBarOverflowStateImpl;->Saver:Landroidx/compose/runtime/saveable/Saver;
+
+    return-object v0
+.end method
+
+
+.method public getTotalItemCount()I
+    .locals 4
+
+    .line 281
+    iget-object v0, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->totalItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    check-cast v0, Landroidx/compose/runtime/IntState;
+
+    .local v0, "$this$getValue$iv":Landroidx/compose/runtime/IntState;
+    const/4 v1, 0x0
+
+    .local v1, "property$iv":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "thisObj$iv":Ljava/lang/Object;
+    const/4 v3, 0x0
+
+    .line 470
+    .local v3, "$i$f$getValue":I
+    invoke-interface {v0}, Landroidx/compose/runtime/IntState;->getIntValue()I
+
+    move-result v0
+
+    .line 281
+    .end local v0
+    .end local v1
+    .end local v2
+    .end local v3
+    return v0
+.end method
+
+.method public getVisibleItemCount()I
+    .locals 4
+
+    .line 282
+    iget-object v0, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->visibleItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    check-cast v0, Landroidx/compose/runtime/IntState;
+
+    .local v0, "$this$getValue$iv":Landroidx/compose/runtime/IntState;
+    const/4 v1, 0x0
+
+    .local v1, "property$iv":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "thisObj$iv":Ljava/lang/Object;
+    const/4 v3, 0x0
+
+    .line 473
+    .local v3, "$i$f$getValue":I
+    invoke-interface {v0}, Landroidx/compose/runtime/IntState;->getIntValue()I
+
+    move-result v0
+
+    .line 282
+    .end local v0
+    .end local v1
+    .end local v2
+    .end local v3
+    return v0
+.end method
+
+.method public setTotalItemCount(I)V
+    .locals 5
+    .param p1, "<set-?>"
+
+    .line 281
+    iget-object v0, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->totalItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    .local v0, "$this$setValue$iv":Landroidx/compose/runtime/MutableIntState;
+    const/4 v1, 0x0
+
+    .local v1, "property$iv":Lkotlin/reflect/KProperty;
+    move v2, p1
+
+    .local v2, "value$iv":I
+    move-object v3, p0
+
+    .local v3, "thisObj$iv":Ljava/lang/Object;
+    const/4 v4, 0x0
+
+    .line 471
+    .local v4, "$i$f$setValue":I
+    invoke-interface {v0, v2}, Landroidx/compose/runtime/MutableIntState;->setIntValue(I)V
+
+    .line 472
+    nop
+
+    .line 281
+    .end local v0
+    .end local v1
+    .end local v2
+    .end local v3
+    .end local v4
+    return-void
+.end method
+
+.method public setVisibleItemCount(I)V
+    .locals 5
+    .param p1, "<set-?>"
+
+    .line 282
+    iget-object v0, p0, Landroidx/compose/material3/AppBarOverflowStateImpl;->visibleItemCount$delegate:Landroidx/compose/runtime/MutableIntState;
+
+    .local v0, "$this$setValue$iv":Landroidx/compose/runtime/MutableIntState;
+    const/4 v1, 0x0
+
+    .local v1, "property$iv":Lkotlin/reflect/KProperty;
+    move v2, p1
+
+    .local v2, "value$iv":I
+    move-object v3, p0
+
+    .local v3, "thisObj$iv":Ljava/lang/Object;
+    const/4 v4, 0x0
+
+    .line 474
+    .local v4, "$i$f$setValue":I
+    invoke-interface {v0, v2}, Landroidx/compose/runtime/MutableIntState;->setIntValue(I)V
+
+    .line 475
+    nop
+
+    .line 282
+    .end local v0
+    .end local v1
+    .end local v2
+    .end local v3
+    .end local v4
+    return-void
+.end method
