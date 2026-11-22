@@ -1,0 +1,323 @@
+.class final Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;
+.super Lkotlin/coroutines/jvm/internal/SuspendLambda;
+.source "HomeScreen.kt"
+
+.implements Lkotlin/jvm/functions/Function2;
+
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt;->HomeScreen(ZLandroid/net/Uri;Lkotlin/jvm/functions/Function0;Lcom/drdisagree/colorblendr/ui/viewmodels/ColorsViewModel;Lcom/drdisagree/colorblendr/ui/viewmodels/StylesViewModel;Lcom/drdisagree/colorblendr/ui/viewmodels/ColorPaletteViewModel;Ljava/lang/String;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;II)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x18
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/coroutines/jvm/internal/SuspendLambda;",
+        "Lkotlin/jvm/functions/Function2<",
+        "Lkotlinx/coroutines/CoroutineScope;",
+        "Lkotlin/coroutines/Continuation<",
+        "-",
+        "Lkotlin/Unit;",
+        ">;",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\n\n\u0000\n\u0002\u0010\u0002\n\u0002\u0018\u0002\u0010\u0000\u001a\u00020\u0001*\u00020\u0002H\n"
+    }
+    d2 = {
+        "<anonymous>",
+        "",
+        "Lkotlinx/coroutines/CoroutineScope;"
+    }
+    k = 0x3
+    mv = {
+        0x2,
+        0x3,
+        0x0
+    }
+    xi = 0x530
+.end annotation
+
+.annotation runtime Lkotlin/coroutines/jvm/internal/DebugMetadata;
+    c = "com.drdisagree.colorblendr.ui.compose.screens.home.HomeScreenKt$HomeScreen$5$1"
+    f = "HomeScreen.kt"
+    i = {}
+    l = {
+        0xfa
+    }
+    m = "invokeSuspend"
+    n = {}
+    nl = {
+        0xfb
+    }
+    s = {}
+    v = 0x2
+.end annotation
+
+
+.field final synthetic $context:Landroid/content/Context;
+
+.field final synthetic $requestPermissionsLauncher:Landroidx/activity/compose/ManagedActivityResultLauncher;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroidx/activity/compose/ManagedActivityResultLauncher<",
+            "[",
+            "Ljava/lang/String;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Boolean;",
+            ">;>;"
+        }
+    .end annotation
+.end field
+
+.field final synthetic $success:Z
+
+.field label:I
+
+
+.method constructor <init>(Landroid/content/Context;ZLandroidx/activity/compose/ManagedActivityResultLauncher;Lkotlin/coroutines/Continuation;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/Context;",
+            "Z",
+            "Landroidx/activity/compose/ManagedActivityResultLauncher<",
+            "[",
+            "Ljava/lang/String;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Boolean;",
+            ">;>;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;",
+            ">;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$context:Landroid/content/Context;
+
+    iput-boolean p2, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$success:Z
+
+    iput-object p3, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$requestPermissionsLauncher:Landroidx/activity/compose/ManagedActivityResultLauncher;
+
+    const/4 v0, 0x2
+
+    invoke-direct {p0, v0, p4}, Lkotlin/coroutines/jvm/internal/SuspendLambda;-><init>(ILkotlin/coroutines/Continuation;)V
+
+    return-void
+.end method
+
+
+.method public final create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    .locals 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Object;",
+            "Lkotlin/coroutines/Continuation<",
+            "*>;)",
+            "Lkotlin/coroutines/Continuation<",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance v0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;
+
+    iget-object v1, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$context:Landroid/content/Context;
+
+    iget-boolean v2, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$success:Z
+
+    iget-object v3, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$requestPermissionsLauncher:Landroidx/activity/compose/ManagedActivityResultLauncher;
+
+    invoke-direct {v0, v1, v2, v3, p2}, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;-><init>(Landroid/content/Context;ZLandroidx/activity/compose/ManagedActivityResultLauncher;Lkotlin/coroutines/Continuation;)V
+
+    check-cast v0, Lkotlin/coroutines/Continuation;
+
+    return-object v0
+.end method
+
+.method public bridge synthetic invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    check-cast p1, Lkotlinx/coroutines/CoroutineScope;
+
+    check-cast p2, Lkotlin/coroutines/Continuation;
+
+    invoke-virtual {p0, p1, p2}, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlinx/coroutines/CoroutineScope;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lkotlin/Unit;",
+            ">;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    invoke-virtual {p0, p1, p2}, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;
+
+    sget-object v1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    invoke-virtual {v0, v1}, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 5
+    .param p1, "$result"
+
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->getCOROUTINE_SUSPENDED()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .line 249
+    iget v1, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->label:I
+
+    packed-switch v1, :pswitch_data_0
+
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "call to \'resume\' before \'invoke\' with coroutine"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :pswitch_0
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    :pswitch_1
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    .line 250
+    sget-object v1, Lkotlin/time/Duration;->Companion:Lkotlin/time/Duration$Companion;
+
+    const/16 v1, 0x7d0
+
+    sget-object v2, Lkotlin/time/DurationUnit;->MILLISECONDS:Lkotlin/time/DurationUnit;
+
+    invoke-static {v1, v2}, Lkotlin/time/DurationKt;->toDuration(ILkotlin/time/DurationUnit;)J
+
+    move-result-wide v1
+
+    move-object v3, p0
+
+    check-cast v3, Lkotlin/coroutines/Continuation;
+
+    const/4 v4, 0x1
+
+    iput v4, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->label:I
+
+    invoke-static {v1, v2, v3}, Lkotlinx/coroutines/DelayKt;->delay-VtjQ1oo(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    if-ne v1, v0, :cond_0
+
+    .line 249
+    return-object v0
+
+    .line 251
+    :cond_0
+    :goto_0
+    nop
+
+    .line 252
+    :try_start_0
+    sget-object v0, Lcom/drdisagree/colorblendr/utils/app/AppUtil;->INSTANCE:Lcom/drdisagree/colorblendr/utils/app/AppUtil;
+
+    iget-object v1, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$context:Landroid/content/Context;
+
+    invoke-virtual {v0, v1}, Lcom/drdisagree/colorblendr/utils/app/AppUtil;->permissionsGranted(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 253
+    sget-object v0, Lcom/drdisagree/colorblendr/service/AutoStartService;->Companion:Lcom/drdisagree/colorblendr/service/AutoStartService$Companion;
+
+    invoke-virtual {v0}, Lcom/drdisagree/colorblendr/service/AutoStartService$Companion;->isServiceNotRunning()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    iget-boolean v0, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$success:Z
+
+    if-eqz v0, :cond_2
+
+    .line 254
+    sget-object v0, Lcom/drdisagree/colorblendr/service/RestartBroadcastReceiver;->Companion:Lcom/drdisagree/colorblendr/service/RestartBroadcastReceiver$Companion;
+
+    iget-object v1, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$context:Landroid/content/Context;
+
+    invoke-virtual {v0, v1}, Lcom/drdisagree/colorblendr/service/RestartBroadcastReceiver$Companion;->scheduleJob(Landroid/content/Context;)V
+
+    goto :goto_1
+
+    .line 257
+    :cond_1
+    iget-object v0, p0, Lcom/drdisagree/colorblendr/ui/compose/screens/home/HomeScreenKt$HomeScreen$5$1;->$requestPermissionsLauncher:Landroidx/activity/compose/ManagedActivityResultLauncher;
+
+    sget-object v1, Lcom/drdisagree/colorblendr/utils/app/AppUtil;->INSTANCE:Lcom/drdisagree/colorblendr/utils/app/AppUtil;
+
+    invoke-virtual {v1}, Lcom/drdisagree/colorblendr/utils/app/AppUtil;->getREQUIRED_PERMISSIONS()[Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroidx/activity/compose/ManagedActivityResultLauncher;->launch(Ljava/lang/Object;)V
+
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_1
+
+    .line 259
+    :catch_0
+    move-exception v0
+
+    .line 261
+    :cond_2
+    :goto_1
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

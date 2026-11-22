@@ -1,0 +1,15 @@
+.class public synthetic Landroid/media/tv/ad/TvAdService$Session;
+.super Ljava/lang/Object;
+
+.implements Landroid/view/KeyEvent$Callback;
+
+
+.method static synthetic constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Ljava/lang/NoClassDefFoundError;
+
+    invoke-direct {v0}, Ljava/lang/NoClassDefFoundError;-><init>()V
+
+    throw v0
+.end method
