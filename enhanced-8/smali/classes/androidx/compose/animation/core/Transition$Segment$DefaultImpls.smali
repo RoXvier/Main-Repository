@@ -1,0 +1,50 @@
+.class public final Landroidx/compose/animation/core/Transition$Segment$DefaultImpls;
+.super Ljava/lang/Object;
+.source "Transition.kt"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/compose/animation/core/Transition$Segment;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "DefaultImpls"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    k = 0x3
+    mv = {
+        0x2,
+        0x1,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+.method public static isTransitioningTo(Landroidx/compose/animation/core/Transition$Segment;Ljava/lang/Object;Ljava/lang/Object;)Z
+    .locals 1
+    .param p0, "$this"
+    .param p1, "$receiver"
+    .param p2, "targetState"
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<S:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Landroidx/compose/animation/core/Transition$Segment<",
+            "TS;>;TS;TS;)Z"
+        }
+    .end annotation
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .line 1801
+    invoke-static {p0, p1, p2}, Landroidx/compose/animation/core/Transition$Segment;->access$isTransitioningTo$jd(Landroidx/compose/animation/core/Transition$Segment;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v0
+
+    .line 1803
+    return v0
+.end method

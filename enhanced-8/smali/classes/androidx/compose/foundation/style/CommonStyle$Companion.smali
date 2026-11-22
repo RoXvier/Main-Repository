@@ -1,0 +1,86 @@
+.class public final Landroidx/compose/foundation/style/CommonStyle$Companion;
+.super Ljava/lang/Object;
+.source "CommonStyle.kt"
+
+.implements Landroidx/compose/foundation/style/CommonStyle;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/compose/foundation/style/CommonStyle;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Companion"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0000\u0008\u0086\u0003\u0018\u00002\u00020\u0001B\t\u0008\u0002\u00a2\u0006\u0004\u0008\u0002\u0010\u0003J\u000c\u0010\u0004\u001a\u00020\u0005*\u00020\u0006H\u0016\u00a8\u0006\u0007"
+    }
+    d2 = {
+        "Landroidx/compose/foundation/style/CommonStyle$Companion;",
+        "Landroidx/compose/foundation/style/CommonStyle;",
+        "<init>",
+        "()V",
+        "applyStyle",
+        "",
+        "Landroidx/compose/foundation/style/CommonStyleScope;",
+        "foundation"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x1,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+.field static final synthetic $$INSTANCE:Landroidx/compose/foundation/style/CommonStyle$Companion;
+
+
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Landroidx/compose/foundation/style/CommonStyle$Companion;
+
+    invoke-direct {v0}, Landroidx/compose/foundation/style/CommonStyle$Companion;-><init>()V
+
+    sput-object v0, Landroidx/compose/foundation/style/CommonStyle$Companion;->$$INSTANCE:Landroidx/compose/foundation/style/CommonStyle$Companion;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 38
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+.method public applyStyle(Landroidx/compose/foundation/style/CommonStyleScope;)V
+    .locals 0
+    .param p1, "$this$applyStyle"
+
+    .line 39
+    return-void
+.end method
+
+.method public bridge synthetic applyStyle(Landroidx/compose/foundation/style/CustomStyleScope;)V
+    .locals 1
+    .param p1, "$this$applyStyle"
+
+    .line 38
+    move-object v0, p1
+
+    check-cast v0, Landroidx/compose/foundation/style/CommonStyleScope;
+
+    invoke-virtual {p0, v0}, Landroidx/compose/foundation/style/CommonStyle$Companion;->applyStyle(Landroidx/compose/foundation/style/CommonStyleScope;)V
+
+    return-void
+.end method

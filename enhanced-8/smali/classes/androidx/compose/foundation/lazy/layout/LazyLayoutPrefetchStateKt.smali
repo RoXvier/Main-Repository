@@ -1,0 +1,104 @@
+.class public final Landroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchStateKt;
+.super Ljava/lang/Object;
+.source "LazyLayoutPrefetchState.kt"
+
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nLazyLayoutPrefetchState.kt\nKotlin\n*S Kotlin\n*F\n+ 1 LazyLayoutPrefetchState.kt\nandroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchStateKt\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n*L\n1#1,949:1\n1#2:950\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\"\n\u0000\n\u0002\u0010\u0008\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0003\u001a\u0016\u0010\u0004\u001a\u00020\u0005*\u00020\u00052\u0008\u0010\u0006\u001a\u0004\u0018\u00010\u0007H\u0001\"\u000e\u0010\u0000\u001a\u00020\u0001X\u0080T\u00a2\u0006\u0002\n\u0000\"\u000e\u0010\u0002\u001a\u00020\u0003X\u0082T\u00a2\u0006\u0002\n\u0000\"\u0014\u0010\u0008\u001a\u00020\t8BX\u0082\u0004\u00a2\u0006\u0006\u001a\u0004\u0008\n\u0010\u000b\u00a8\u0006\u000c"
+    }
+    d2 = {
+        "UnspecifiedNestedPrefetchCount",
+        "",
+        "TraversablePrefetchStateNodeKey",
+        "",
+        "traversablePrefetchState",
+        "Landroidx/compose/ui/Modifier;",
+        "lazyLayoutPrefetchState",
+        "Landroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchState;",
+        "ZeroConstraints",
+        "Landroidx/compose/ui/unit/Constraints;",
+        "getZeroConstraints",
+        "()J",
+        "foundation"
+    }
+    k = 0x2
+    mv = {
+        0x2,
+        0x1,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+.field private static final TraversablePrefetchStateNodeKey:Ljava/lang/String; = "androidx.compose.foundation.lazy.layout.TraversablePrefetchStateNode"
+
+.field public static final UnspecifiedNestedPrefetchCount:I = -0x1
+
+
+.method private static final getZeroConstraints()J
+    .locals 6
+
+    .line 948
+    const/4 v4, 0x5
+
+    const/4 v5, 0x0
+
+    const/4 v0, 0x0
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    invoke-static/range {v0 .. v5}, Landroidx/compose/ui/unit/ConstraintsKt;->Constraints$default(IIIIILjava/lang/Object;)J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public static final traversablePrefetchState(Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchState;)Landroidx/compose/ui/Modifier;
+    .locals 3
+    .param p0, "$this$traversablePrefetchState"
+    .param p1, "lazyLayoutPrefetchState"
+
+    .line 920
+    if-eqz p1, :cond_0
+
+    move-object v0, p1
+
+    .line 950
+    .local v0, "it":Landroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchState;
+    const/4 v1, 0x0
+
+    .line 920
+    .local v1, "$i$a$-let-LazyLayoutPrefetchStateKt$traversablePrefetchState$1":I
+    new-instance v2, Landroidx/compose/foundation/lazy/layout/TraversablePrefetchStateModifierElement;
+
+    invoke-direct {v2, v0}, Landroidx/compose/foundation/lazy/layout/TraversablePrefetchStateModifierElement;-><init>(Landroidx/compose/foundation/lazy/layout/LazyLayoutPrefetchState;)V
+
+    check-cast v2, Landroidx/compose/ui/Modifier;
+
+    invoke-interface {p0, v2}, Landroidx/compose/ui/Modifier;->then(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+
+    move-result-object v0
+
+    .end local v0
+    .end local v1
+    if-nez v0, :cond_1
+
+    .line 921
+    :cond_0
+    move-object v0, p0
+
+    .line 920
+    :cond_1
+    return-object v0
+.end method

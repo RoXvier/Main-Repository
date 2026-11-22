@@ -1,0 +1,53 @@
+.class Landroidx/core/app/RemoteInput$Api29Impl;
+.super Ljava/lang/Object;
+.source "RemoteInput.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/app/RemoteInput;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = "Api29Impl"
+.end annotation
+
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 622
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 624
+    return-void
+.end method
+
+.method static getEditChoicesBeforeSending(Ljava/lang/Object;)I
+    .locals 1
+    .param p0, "remoteInput"
+
+    .line 627
+    move-object v0, p0
+
+    check-cast v0, Landroid/app/RemoteInput;
+
+    invoke-virtual {v0}, Landroid/app/RemoteInput;->getEditChoicesBeforeSending()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static setEditChoicesBeforeSending(Landroid/app/RemoteInput$Builder;I)Landroid/app/RemoteInput$Builder;
+    .locals 1
+    .param p0, "builder"
+    .param p1, "editChoicesBeforeSending"
+
+    .line 632
+    invoke-virtual {p0, p1}, Landroid/app/RemoteInput$Builder;->setEditChoicesBeforeSending(I)Landroid/app/RemoteInput$Builder;
+
+    move-result-object v0
+
+    return-object v0
+.end method

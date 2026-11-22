@@ -1,0 +1,143 @@
+.class Landroidx/core/app/NotificationCompat$CallStyle$Api31Impl;
+.super Ljava/lang/Object;
+.source "NotificationCompat.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/app/NotificationCompat$CallStyle;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = "Api31Impl"
+.end annotation
+
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 5169
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 5170
+    return-void
+.end method
+
+.method static forIncomingCall(Landroid/app/Person;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "person"
+    .param p1, "declineIntent"
+    .param p2, "answerIntent"
+
+    .line 5174
+    invoke-static {p0, p1, p2}, Landroid/app/Notification$CallStyle;->forIncomingCall(Landroid/app/Person;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static forOngoingCall(Landroid/app/Person;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "person"
+    .param p1, "hangUpIntent"
+
+    .line 5179
+    invoke-static {p0, p1}, Landroid/app/Notification$CallStyle;->forOngoingCall(Landroid/app/Person;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static forScreeningCall(Landroid/app/Person;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "person"
+    .param p1, "hangUpIntent"
+    .param p2, "answerIntent"
+
+    .line 5184
+    invoke-static {p0, p1, p2}, Landroid/app/Notification$CallStyle;->forScreeningCall(Landroid/app/Person;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setAnswerButtonColorHint(Landroid/app/Notification$CallStyle;I)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "callStyle"
+    .param p1, "color"
+
+    .line 5204
+    invoke-virtual {p0, p1}, Landroid/app/Notification$CallStyle;->setAnswerButtonColorHint(I)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setAuthenticationRequired(Landroid/app/Notification$Action$Builder;Z)Landroid/app/Notification$Action$Builder;
+    .locals 1
+    .param p0, "actionBuilder"
+    .param p1, "authenticationRequired"
+
+    .line 5214
+    invoke-virtual {p0, p1}, Landroid/app/Notification$Action$Builder;->setAuthenticationRequired(Z)Landroid/app/Notification$Action$Builder;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setDeclineButtonColorHint(Landroid/app/Notification$CallStyle;I)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "callStyle"
+    .param p1, "color"
+
+    .line 5209
+    invoke-virtual {p0, p1}, Landroid/app/Notification$CallStyle;->setDeclineButtonColorHint(I)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setIsVideo(Landroid/app/Notification$CallStyle;Z)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "callStyle"
+    .param p1, "isVideo"
+
+    .line 5189
+    invoke-virtual {p0, p1}, Landroid/app/Notification$CallStyle;->setIsVideo(Z)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setVerificationIcon(Landroid/app/Notification$CallStyle;Landroid/graphics/drawable/Icon;)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "callStyle"
+    .param p1, "verificationIcon"
+
+    .line 5194
+    invoke-virtual {p0, p1}, Landroid/app/Notification$CallStyle;->setVerificationIcon(Landroid/graphics/drawable/Icon;)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static setVerificationText(Landroid/app/Notification$CallStyle;Ljava/lang/CharSequence;)Landroid/app/Notification$CallStyle;
+    .locals 1
+    .param p0, "callStyle"
+    .param p1, "verificationText"
+
+    .line 5199
+    invoke-virtual {p0, p1}, Landroid/app/Notification$CallStyle;->setVerificationText(Ljava/lang/CharSequence;)Landroid/app/Notification$CallStyle;
+
+    move-result-object v0
+
+    return-object v0
+.end method

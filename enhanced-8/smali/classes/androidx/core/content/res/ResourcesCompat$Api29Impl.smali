@@ -1,0 +1,37 @@
+.class Landroidx/core/content/res/ResourcesCompat$Api29Impl;
+.super Ljava/lang/Object;
+.source "ResourcesCompat.java"
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/content/res/ResourcesCompat;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = "Api29Impl"
+.end annotation
+
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 625
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 627
+    return-void
+.end method
+
+.method static getFloat(Landroid/content/res/Resources;I)F
+    .locals 1
+    .param p0, "res"
+    .param p1, "id"
+
+    .line 630
+    invoke-virtual {p0, p1}, Landroid/content/res/Resources;->getFloat(I)F
+
+    move-result v0
+
+    return v0
+.end method

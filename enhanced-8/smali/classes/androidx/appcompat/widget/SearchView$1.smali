@@ -1,0 +1,52 @@
+.class Landroidx/appcompat/widget/SearchView$1;
+.super Ljava/lang/Object;
+.source "SearchView.java"
+
+.implements Ljava/lang/Runnable;
+
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/appcompat/widget/SearchView;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+.field final synthetic this$0:Landroidx/appcompat/widget/SearchView;
+
+
+.method constructor <init>(Landroidx/appcompat/widget/SearchView;)V
+    .locals 0
+    .param p1, "this$0"
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010
+        }
+        names = {
+            null
+        }
+    .end annotation
+
+    .line 183
+    iput-object p1, p0, Landroidx/appcompat/widget/SearchView$1;->this$0:Landroidx/appcompat/widget/SearchView;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+.method public run()V
+    .locals 1
+
+    .line 186
+    iget-object v0, p0, Landroidx/appcompat/widget/SearchView$1;->this$0:Landroidx/appcompat/widget/SearchView;
+
+    invoke-virtual {v0}, Landroidx/appcompat/widget/SearchView;->updateFocusedState()V
+
+    .line 187
+    return-void
+.end method
